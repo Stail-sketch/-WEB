@@ -339,7 +339,7 @@ body.dark .omikuji-sub{color:#9a70c0!important}
 @keyframes oSparkFly{0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.1) rotate(var(--rot))}}
 </style>
 </head>
-<body>
+<body class="dark">
 
 <!-- ====== SPLASH ====== -->
 <div id="splash">
@@ -357,7 +357,6 @@ body.dark .omikuji-sub{color:#9a70c0!important}
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 <button id="bgm-btn" class="muted" title="BGM ON/OFF">🎵</button>
-<button id="theme-btn" title="ダーク/ライトモード切替">🌙</button>
 
 <canvas id="particles"></canvas>
 
@@ -1054,21 +1053,6 @@ window.addEventListener('scroll',()=>{
   });
 })();
 
-// ====== DARK MODE TOGGLE ======
-(function(){
-  const btn=document.getElementById('theme-btn');
-  const body=document.body;
-  const saved=localStorage.getItem('darkMode');
-  const prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark=saved!==null?saved==='1':prefersDark;
-  function applyDark(dark){
-    body.classList.toggle('dark',dark);
-    btn.textContent=dark?'☀️':'🌙';
-    localStorage.setItem('darkMode',dark?'1':'0');
-  }
-  applyDark(isDark);
-  btn.addEventListener('click',()=>applyDark(!body.classList.contains('dark')));
-})();
 
 // ====== おみくじ ======
 (function(){
