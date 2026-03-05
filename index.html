@@ -149,8 +149,8 @@ section{position:relative}
 
 /* SNS */
 #sns{background:linear-gradient(180deg,#fff5fb 0%,#f0fff9 100%)}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.3rem}
-.sc{background:white;border-radius:1.8rem;padding:2.2rem 1.4rem;text-align:center;border:2px solid var(--pink-lt);text-decoration:none;color:var(--black);display:flex;flex-direction:column;align-items:center;gap:.9rem;font-weight:800;transition:all .25s;position:relative;overflow:hidden}
+.sgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.3rem}
+.sc{width:220px;background:white;border-radius:1.8rem;padding:2.2rem 1.4rem;text-align:center;border:2px solid var(--pink-lt);text-decoration:none;color:var(--black);display:flex;flex-direction:column;align-items:center;gap:.9rem;font-weight:800;transition:all .25s;position:relative;overflow:hidden}
 .sc::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
 .sc:hover{transform:translateY(-6px)}
 .sc:hover::before{opacity:1}
