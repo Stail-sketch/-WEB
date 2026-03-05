@@ -8,7 +8,7 @@
 <style>
 :root{
   --pink:#ff85b3;--pink2:#ff5fa0;--pink-lt:#ffd6e8;--pink-pale:#fff0f7;
-  --mint:#5ee8c8;--mint2:#00d4a8;--yellow:#ffe566;--purple:#c97aff;--purple2:#a855f7;
+  --mint:#5ee8c8;--mint2:#00d4a8;--yellow:#ffe566;--purple:#c97aff;
   --black:#2a1f2e;--mid:#6b4c7a;--white:#fffafc;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -17,7 +17,7 @@ body{font-family:'M PLUS Rounded 1c','Hiragino Maru Gothic ProN',sans-serif;back
 #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,250,252,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:2px solid var(--pink-lt);display:flex;align-items:center;justify-content:space-between;padding:.6rem 2.5rem;transition:all .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,250,252,.88);backdrop-filter:blur(20px);border-bottom:2px solid var(--pink-lt);display:flex;align-items:center;justify-content:space-between;padding:.6rem 2.5rem;transition:all .3s}
 nav.scrolled{box-shadow:0 4px 30px rgba(255,133,179,.15)}
 .logo{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.06em;display:flex;align-items:center;gap:.4rem;text-decoration:none}
 .nav-links{display:flex;gap:1.6rem;list-style:none}
@@ -37,12 +37,12 @@ nav.scrolled{box-shadow:0 4px 30px rgba(255,133,179,.15)}
 .chara{width:320px;max-width:85vw;border-radius:50% 42% 50% 42%;object-fit:cover;object-position:top;display:block;position:relative;z-index:1;filter:drop-shadow(0 10px 40px rgba(255,133,179,.4));animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .f-badge{position:absolute;background:white;border-radius:999px;padding:.3rem .8rem;font-size:.78rem;font-weight:800;box-shadow:0 4px 20px rgba(255,133,179,.25);border:2px solid var(--pink-lt);white-space:nowrap;animation:floatBadge 3s ease-in-out infinite}
-.fb1{top:-10px;right:-20px;animation-delay:0s;color:var(--pink)}
+.fb1{top:-10px;right:-20px;color:var(--pink)}
 .fb2{bottom:30px;right:-30px;animation-delay:.8s;color:var(--purple)}
 .fb3{bottom:-10px;left:-10px;animation-delay:1.6s;color:var(--mint2)}
 @keyframes floatBadge{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
 .hero-text{text-align:center}
-.badge{display:inline-flex;align-items:center;gap:.4rem;background:white;color:var(--pink);border:2.5px solid var(--pink-lt);border-radius:999px;font-size:.82rem;font-weight:800;padding:.3rem 1rem;margin-bottom:1.2rem;letter-spacing:.08em;box-shadow:0 4px 16px rgba(255,133,179,.15)}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:white;color:var(--pink);border:2.5px solid var(--pink-lt);border-radius:999px;font-size:.82rem;font-weight:800;padding:.3rem 1rem;margin-bottom:1.2rem;letter-spacing:.08em}
 .hname{font-size:clamp(3.2rem,9vw,6rem);font-weight:900;line-height:.95;background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 45%,var(--mint2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.4rem;animation:textShine 3s linear infinite;background-size:200% auto}
 @keyframes textShine{to{background-position:200% center}}
 .hname-en{font-size:1rem;font-weight:800;letter-spacing:.28em;color:var(--mid);margin-bottom:1.2rem;opacity:.6}
@@ -50,12 +50,12 @@ nav.scrolled{box-shadow:0 4px 30px rgba(255,133,179,.15)}
 .htag{display:inline-block;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;border-radius:999px;padding:.45rem 1.4rem;font-size:.92rem;font-weight:800;letter-spacing:.05em;margin-bottom:2.2rem;box-shadow:0 4px 20px rgba(255,133,179,.45);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(255,133,179,.45)}50%{box-shadow:0 4px 35px rgba(255,133,179,.8),0 0 0 8px rgba(255,133,179,.1)}}
 .hbtns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.8rem;border-radius:999px;font-weight:800;font-size:.95rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.8rem;border-radius:999px;font-weight:800;font-size:.95rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
 .btn:hover{transform:translateY(-4px)}
 .btn-p{background:linear-gradient(90deg,var(--pink),var(--purple));color:white;box-shadow:0 4px 20px rgba(255,133,179,.5)}
 .btn-p:hover{box-shadow:0 10px 35px rgba(255,133,179,.7)}
-.btn-o{background:white;color:var(--pink);border:2.5px solid var(--pink);box-shadow:0 2px 15px rgba(255,133,179,.2)}
-.btn-o:hover{background:var(--pink-pale);box-shadow:0 8px 25px rgba(255,133,179,.35)}
+.btn-o{background:white;color:var(--pink);border:2.5px solid var(--pink)}
+.btn-o:hover{background:var(--pink-pale)}
 .hero-deco{position:absolute;font-size:3rem;opacity:.07;pointer-events:none;user-select:none}
 .hd1{top:8%;left:4%;transform:rotate(-15deg)}
 .hd2{top:15%;right:5%;transform:rotate(20deg);font-size:2.5rem}
@@ -66,8 +66,8 @@ nav.scrolled{box-shadow:0 4px 30px rgba(255,133,179,.15)}
 
 /* SECTIONS */
 section{position:relative;z-index:1}
-.si{max-width:1200px;margin:0 auto;padding:5.5rem 2rem}
-.st{text-align:center;margin-bottom:3.5rem}
+.si{max-width:1300px;margin:0 auto;padding:5.5rem 2rem}
+.st{text-align:center;margin-bottom:3rem}
 .st h2{display:inline-flex;align-items:center;gap:.5rem;position:relative;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;padding-bottom:.6rem}
 .st h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:4px;background:linear-gradient(90deg,var(--pink),var(--mint));border-radius:999px}
 .st p{color:var(--mid);font-weight:700;margin-top:1.2rem;font-size:.95rem}
@@ -84,32 +84,46 @@ section{position:relative;z-index:1}
 .cv{font-size:1rem;font-weight:700;color:var(--black);line-height:1.6}
 .cv.sm{font-size:.83rem;line-height:1.85}
 
-/* GALLERY */
+/* ===== GALLERY / SLIDER ===== */
 #gallery{background:linear-gradient(180deg,#f3eeff 0%,#fff0f7 100%)}
-.gallery-count{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;border-radius:999px;padding:.3rem 1rem;font-size:.82rem;font-weight:800;margin-top:.8rem}
-.ggrid{columns:4;column-gap:1.2rem}
-@media(max-width:1100px){.ggrid{columns:3}}
-@media(max-width:700px){.ggrid{columns:2}}
-@media(max-width:420px){.ggrid{columns:1}}
-.gi{break-inside:avoid;position:relative;overflow:hidden;border-radius:1.2rem;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:all .3s;cursor:pointer;margin-bottom:1.2rem;display:block}
-.gi:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(201,122,255,.35)}
-.gi img{width:100%;display:block;transition:transform .4s}
-.gi:hover img{transform:scale(1.04)}
-.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,46,.65) 0%,transparent 50%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity .3s}
-.gi:hover .gov{opacity:1}
-.gcap{color:white;font-weight:800;font-size:.85rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+.gallery-block{margin-bottom:4rem}
+.gallery-block:last-child{margin-bottom:0}
+
+.gb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;padding:0 .5rem}
+.gb-title{display:flex;align-items:center;gap:.7rem}
+.gb-title h3{font-size:1.35rem;font-weight:900;color:var(--black)}
+.gb-count{background:linear-gradient(90deg,var(--pink),var(--purple));color:white;border-radius:999px;padding:.2rem .8rem;font-size:.78rem;font-weight:800}
+.gb-arrows{display:flex;gap:.5rem}
+.arrow-btn{width:2.6rem;height:2.6rem;border-radius:50%;border:2.5px solid var(--pink-lt);background:white;color:var(--pink);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-weight:900}
+.arrow-btn:hover{background:var(--pink);color:white;border-color:var(--pink);transform:scale(1.1)}
+
+.slider-wrap{position:relative}
+.slider{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.5rem .3rem 1.2rem;-ms-overflow-style:none;scrollbar-width:none}
+.slider::-webkit-scrollbar{display:none}
+
+.slide-item{flex-shrink:0;width:260px;border-radius:1.2rem;overflow:hidden;position:relative;cursor:pointer;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:all .3s;scroll-snap-align:start}
+.slide-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(201,122,255,.35)}
+.slide-item img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform .3s}
+.slide-item:hover img{transform:scale(1.04)}
+
+/* お写真は横長も考慮 */
+.photos-slider .slide-item img{aspect-ratio:unset;max-height:340px;object-fit:contain;background:#faf7ff}
 
 /* SPOILER */
-.gi.spoiler img{filter:blur(22px);transition:filter .4s}
-.gi.spoiler.revealed img{filter:blur(0)}
-.spoiler-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(44,31,46,.35);color:white;font-weight:800;font-size:.95rem;text-align:center;gap:.5rem;transition:opacity .3s;pointer-events:none;z-index:2}
-.spoiler-overlay::before{content:'🔞';font-size:2rem}
-.gi.spoiler.revealed .spoiler-overlay{opacity:0}
+.slide-item.spoiler img{filter:blur(20px)}
+.slide-item.spoiler.revealed img{filter:blur(0)}
+.spoiler-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(44,31,46,.4);color:white;font-weight:800;font-size:.9rem;gap:.4rem;transition:opacity .3s;z-index:2;pointer-events:none}
+.spoiler-overlay::before{content:'🔞';font-size:1.8rem}
+.slide-item.spoiler.revealed .spoiler-overlay{opacity:0}
+
+/* scroll hint fade edges */
+.slider-wrap::after{content:'';position:absolute;right:0;top:0;bottom:1.2rem;width:60px;background:linear-gradient(to left,rgba(248,240,255,.9),transparent);pointer-events:none;border-radius:0 1.2rem 1.2rem 0}
 
 /* SNS */
 #sns{background:linear-gradient(180deg,#fff5fb 0%,#f0fff9 100%)}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.3rem}
-.sc{background:white;border-radius:1.6rem;padding:1.8rem 1.2rem;text-align:center;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.08);text-decoration:none;color:var(--black);display:flex;flex-direction:column;align-items:center;gap:.8rem;font-weight:800;transition:all .25s;position:relative;overflow:hidden}
+.sc{background:white;border-radius:1.6rem;padding:1.8rem 1.2rem;text-align:center;border:2px solid var(--pink-lt);text-decoration:none;color:var(--black);display:flex;flex-direction:column;align-items:center;gap:.8rem;font-weight:800;transition:all .25s;position:relative;overflow:hidden}
 .sc::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
 .sc:hover{transform:translateY(-6px)}
 .sc:hover::before{opacity:1}
@@ -137,7 +151,7 @@ section{position:relative;z-index:1}
 .chip:hover{background:var(--pink);color:white;transform:scale(1.05)}
 
 /* FOOTER */
-footer{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:2.5rem 1.5rem;position:relative;z-index:1;line-height:2;font-size:.85rem;font-weight:700;overflow:hidden}
+footer{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:2.5rem 1.5rem;position:relative;z-index:1;line-height:2;font-size:.85rem;font-weight:700}
 .footer-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:120px;background:radial-gradient(ellipse,rgba(255,133,179,.2) 0%,transparent 70%);pointer-events:none}
 footer strong{color:var(--pink)}
 footer a{color:var(--mint);text-decoration:none;transition:color .2s}
@@ -164,6 +178,7 @@ footer a:hover{color:var(--pink)}
   .nav-links{gap:.8rem}
   .nav-links a{font-size:.78rem}
   .pgrid{grid-template-columns:1fr}
+  .slide-item{width:200px}
 }
 </style>
 </head>
@@ -175,7 +190,7 @@ footer a:hover{color:var(--pink)}
   <a href="#hero" class="logo">🎋🐈 たけねこ</a>
   <ul class="nav-links">
     <li><a href="#profile">プロフィール</a></li>
-    <li><a href="#gallery">支援絵</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
     <li><a href="#sns">SNS</a></li>
     <li><a href="#contact">お仕事依頼</a></li>
   </ul>
@@ -187,7 +202,7 @@ footer a:hover{color:var(--pink)}
       <div class="img-ring"></div>
       <div class="img-ring2"></div>
       <div class="img-ring3"></div>
-      <img class="chara" src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png" alt="たけねこ">
+      <img class="chara" src="お写真/たけねこ様　２-1.png" alt="たけねこ">
       <div class="f-badge fb1">🎮 LoL</div>
       <div class="f-badge fb2">✦ VTuber</div>
       <div class="f-badge fb3">🐾 ねこ</div>
@@ -199,17 +214,14 @@ footer a:hover{color:var(--pink)}
       <p class="hcatch">サモナーズリフトに救済と粛清を🗡️<br>イブリンOTP ／ ねこVTuber</p>
       <div class="htag">#ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</div>
       <div class="hbtns">
-        <a href="#gallery" class="btn btn-p">🎨 支援絵を見る</a>
+        <a href="#gallery" class="btn btn-p">🎨 ギャラリーを見る</a>
         <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="btn btn-o">𝕏 フォローする</a>
       </div>
     </div>
   </div>
-  <span class="hero-deco hd1">🐾</span>
-  <span class="hero-deco hd2">🎋</span>
-  <span class="hero-deco hd3">🐾</span>
-  <span class="hero-deco hd4">🎋</span>
-  <span class="hero-deco hd5">♡</span>
-  <span class="hero-deco hd6">✦</span>
+  <span class="hero-deco hd1">🐾</span><span class="hero-deco hd2">🎋</span>
+  <span class="hero-deco hd3">🐾</span><span class="hero-deco hd4">🎋</span>
+  <span class="hero-deco hd5">♡</span><span class="hero-deco hd6">✦</span>
 </section>
 
 <section id="profile">
@@ -237,313 +249,242 @@ footer a:hover{color:var(--pink)}
 
 <section id="gallery">
   <div class="si">
-    <div class="st rv">
-      <h2>🎨 支援絵ギャラリー</h2>
-      <p>みんなからもらった大切な支援絵たち 🐾</p>
-      <div class="gallery-count">🖼️ 60枚</div>
-    </div>
-    <div class="ggrid">
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/0625a78a88bb6c1c.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/0625a78a88bb6c1c.png" alt="0625a78a88bb6c1c.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+    <div class="st rv"><h2>🖼️ ギャラリー</h2><p>スライドして見てね 🐾</p></div>
+
+    <!-- お写真 -->
+    <div class="gallery-block rv">
+      <div class="gb-header">
+        <div class="gb-title">
+          <span style="font-size:1.6rem">📷</span>
+          <h3>お写真</h3>
+          <span class="gb-count">9枚</span>
+        </div>
+        <div class="gb-arrows">
+          <button class="arrow-btn" onclick="slideLeft('photos-slider')">&#8249;</button>
+          <button class="arrow-btn" onclick="slideRight('photos-slider')">&#8250;</button>
+        </div>
       </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/16_20250617131135.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/16_20250617131135.jpg" alt="16_20250617131135.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250303---1.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250303---1.png" alt="20250303---1.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250325---.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250325---.png" alt="20250325---.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png" alt="20250327-仕事-たけねこ様-清書-透過キャラ.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/254fb08680c90e1e.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/254fb08680c90e1e.png" alt="254fb08680c90e1e.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.output.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.output.png" alt="2749344-1.output.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.png" alt="2749344-1.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/32684.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/32684.png" alt="32684.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448-1.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448-1.png" alt="3268448-1.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448.png" alt="3268448.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/374c74bffe5c39d7.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/374c74bffe5c39d7.png" alt="374c74bffe5c39d7.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/5968efc0b8f03826.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/5968efc0b8f03826.png" alt="5968efc0b8f03826.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/629976f03d134f53.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/629976f03d134f53.png" alt="629976f03d134f53.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" alt="6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/88_20250618141851.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/88_20250618141851.png" alt="88_20250618141851.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg" alt="8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8d6bd5e58594b847.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8d6bd5e58594b847.png" alt="8d6bd5e58594b847.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png" alt="AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0ArVoZa4AA0_5S.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0ArVoZa4AA0_5S.jpg" alt="G0ArVoZa4AA0_5S.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0VLUmkaEAAa-sm.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0VLUmkaEAAa-sm.png" alt="G0VLUmkaEAAa-sm.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0W9m90bcAEUyYU.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0W9m90bcAEUyYU.jpg" alt="G0W9m90bcAEUyYU.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G3eZdW2XYAAMSwB.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G3eZdW2XYAAMSwB.png" alt="G3eZdW2XYAAMSwB.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G54Ixw6a4AEtETa.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G54Ixw6a4AEtETa.jpg" alt="G54Ixw6a4AEtETa.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G7ztAz8aoAA8rP-.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G7ztAz8aoAA8rP-.jpg" alt="G7ztAz8aoAA8rP-.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GwIj97obYAA63n_.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GwIj97obYAA63n_.jpg" alt="GwIj97obYAA63n_.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gwv8mhEbgAIgRRW.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gwv8mhEbgAIgRRW.jpg" alt="Gwv8mhEbgAIgRRW.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gx-vlSZb0AANBzg.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gx-vlSZb0AANBzg.jpg" alt="Gx-vlSZb0AANBzg.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GxmgvKJaoAAHUPr.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GxmgvKJaoAAHUPr.jpg" alt="GxmgvKJaoAAHUPr.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyFf3AIaEAM_aLN.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyFf3AIaEAM_aLN.jpg" alt="GyFf3AIaEAM_aLN.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyHRZBBaEAANrOt.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyHRZBBaEAANrOt.jpg" alt="GyHRZBBaEAANrOt.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyXSXgsa4AU38rf.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyXSXgsa4AU38rf.jpg" alt="GyXSXgsa4AU38rf.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyvZwJXa4AE8yrj.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyvZwJXa4AE8yrj.jpg" alt="GyvZwJXa4AE8yrj.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzIoVi5aEAAkjuV.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzIoVi5aEAAkjuV.jpg" alt="GzIoVi5aEAAkjuV.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzK1U7QbcAAO4CT.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzK1U7QbcAAO4CT.jpg" alt="GzK1U7QbcAAO4CT.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzQvAJjbAAA-4bM.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzQvAJjbAAA-4bM.jpg" alt="GzQvAJjbAAA-4bM.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziEaa7bkAExMCj.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziEaa7bkAExMCj.jpg" alt="GziEaa7bkAExMCj.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziG_ZEa0AACecA.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziG_ZEa0AACecA.jpg" alt="GziG_ZEa0AACecA.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzkUEG3bkAAgq3b.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzkUEG3bkAAgq3b.png" alt="GzkUEG3bkAAgq3b.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gzlf09daoAAFWY8.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gzlf09daoAAFWY8.jpg" alt="Gzlf09daoAAFWY8.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzwMKKcbYAAgm4i.jpg">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzwMKKcbYAAgm4i.jpg" alt="GzwMKKcbYAAgm4i.jpg" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0482.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0482.png" alt="IMG_0482.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0891.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0891.png" alt="IMG_0891.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_1098.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_1098.png" alt="IMG_1098.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" alt="Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/PXaM1piPU24PzZc1751242562_1751242586.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/PXaM1piPU24PzZc1751242562_1751242586.png" alt="PXaM1piPU24PzZc1751242562_1751242586.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_.png" alt="SPOILER_.png" loading="lazy">
-        <div class="spoiler-overlay">クリックで表示</div>
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_2025.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_2025.png" alt="SPOILER_2025.png" loading="lazy">
-        <div class="spoiler-overlay">クリックで表示</div>
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_１.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_１.png" alt="SPOILER_１.png" loading="lazy">
-        <div class="spoiler-overlay">クリックで表示</div>
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a6391b52db95eccd.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a6391b52db95eccd.png" alt="a6391b52db95eccd.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a8999b2ea6ec3dad.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a8999b2ea6ec3dad.png" alt="a8999b2ea6ec3dad.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/bb3c9b937013feb8.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/bb3c9b937013feb8.png" alt="bb3c9b937013feb8.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/de1747e6c3f125ff.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/de1747e6c3f125ff.png" alt="de1747e6c3f125ff.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/e643e47fce825012.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/e643e47fce825012.png" alt="e643e47fce825012.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/santa.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/santa.png" alt="santa.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take.png" alt="take.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take2.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take2.png" alt="take2.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/tttt.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/tttt.png" alt="tttt.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-1.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-1.png" alt="たけねこ様　２-1.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
-      </div>
-      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-2.png">
-        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-2.png" alt="たけねこ様　２-2.png" loading="lazy">
-        
-        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      <div class="slider-wrap">
+        <div class="slider photos-slider" id="photos-slider">
+        <div class="slide-item" data-src="お写真/20250325---.png" data-idx="0">
+          <img src="お写真/20250325---.png" alt="20250325---.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/2749344-1.output.png" data-idx="1">
+          <img src="お写真/2749344-1.output.png" alt="2749344-1.output.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/3268448-1.png" data-idx="2">
+          <img src="お写真/3268448-1.png" alt="3268448-1.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" data-idx="3">
+          <img src="お写真/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" alt="6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/IMG_0482.png" data-idx="4">
+          <img src="お写真/IMG_0482.png" alt="IMG_0482.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/IMG_1098.png" data-idx="5">
+          <img src="お写真/IMG_1098.png" alt="IMG_1098.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" data-idx="6">
+          <img src="お写真/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" alt="Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/たけねこラベル①.png" data-idx="7">
+          <img src="お写真/たけねこラベル①.png" alt="たけねこラベル①.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="お写真/たけねこ様　２-1.png" data-idx="8">
+          <img src="お写真/たけねこ様　２-1.png" alt="たけねこ様　２-1.png" loading="lazy">
+          
+        </div>
+        </div>
       </div>
     </div>
+
+    <!-- ファンアート -->
+    <div class="gallery-block rv">
+      <div class="gb-header">
+        <div class="gb-title">
+          <span style="font-size:1.6rem">🎨</span>
+          <h3>ファンアート</h3>
+          <span class="gb-count">40枚</span>
+        </div>
+        <div class="gb-arrows">
+          <button class="arrow-btn" onclick="slideLeft('fanart-slider')">&#8249;</button>
+          <button class="arrow-btn" onclick="slideRight('fanart-slider')">&#8250;</button>
+        </div>
+      </div>
+      <div class="slider-wrap">
+        <div class="slider fanart-slider" id="fanart-slider">
+        <div class="slide-item" data-src="ファンアート/0625a78a88bb6c1c.png" data-idx="0">
+          <img src="ファンアート/0625a78a88bb6c1c.png" alt="0625a78a88bb6c1c.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/16_20250617131135.jpg" data-idx="1">
+          <img src="ファンアート/16_20250617131135.jpg" alt="16_20250617131135.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/254fb08680c90e1e.png" data-idx="2">
+          <img src="ファンアート/254fb08680c90e1e.png" alt="254fb08680c90e1e.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/374c74bffe5c39d7.png" data-idx="3">
+          <img src="ファンアート/374c74bffe5c39d7.png" alt="374c74bffe5c39d7.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/5968efc0b8f03826.png" data-idx="4">
+          <img src="ファンアート/5968efc0b8f03826.png" alt="5968efc0b8f03826.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/629976f03d134f53.png" data-idx="5">
+          <img src="ファンアート/629976f03d134f53.png" alt="629976f03d134f53.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/8d6bd5e58594b847.png" data-idx="6">
+          <img src="ファンアート/8d6bd5e58594b847.png" alt="8d6bd5e58594b847.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G0ArVoZa4AA0_5S.jpg" data-idx="7">
+          <img src="ファンアート/G0ArVoZa4AA0_5S.jpg" alt="G0ArVoZa4AA0_5S.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G0VLUmkaEAAa-sm.png" data-idx="8">
+          <img src="ファンアート/G0VLUmkaEAAa-sm.png" alt="G0VLUmkaEAAa-sm.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G0W9m90bcAEUyYU.jpg" data-idx="9">
+          <img src="ファンアート/G0W9m90bcAEUyYU.jpg" alt="G0W9m90bcAEUyYU.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G3eZdW2XYAAMSwB.png" data-idx="10">
+          <img src="ファンアート/G3eZdW2XYAAMSwB.png" alt="G3eZdW2XYAAMSwB.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G54Ixw6a4AEtETa.jpg" data-idx="11">
+          <img src="ファンアート/G54Ixw6a4AEtETa.jpg" alt="G54Ixw6a4AEtETa.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/G7ztAz8aoAA8rP-.jpg" data-idx="12">
+          <img src="ファンアート/G7ztAz8aoAA8rP-.jpg" alt="G7ztAz8aoAA8rP-.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GwIj97obYAA63n_.jpg" data-idx="13">
+          <img src="ファンアート/GwIj97obYAA63n_.jpg" alt="GwIj97obYAA63n_.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/Gwv8mhEbgAIgRRW.jpg" data-idx="14">
+          <img src="ファンアート/Gwv8mhEbgAIgRRW.jpg" alt="Gwv8mhEbgAIgRRW.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/Gx-vlSZb0AANBzg.jpg" data-idx="15">
+          <img src="ファンアート/Gx-vlSZb0AANBzg.jpg" alt="Gx-vlSZb0AANBzg.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GxmgvKJaoAAHUPr.jpg" data-idx="16">
+          <img src="ファンアート/GxmgvKJaoAAHUPr.jpg" alt="GxmgvKJaoAAHUPr.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GyFf3AIaEAM_aLN.jpg" data-idx="17">
+          <img src="ファンアート/GyFf3AIaEAM_aLN.jpg" alt="GyFf3AIaEAM_aLN.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GyHRZBBaEAANrOt.jpg" data-idx="18">
+          <img src="ファンアート/GyHRZBBaEAANrOt.jpg" alt="GyHRZBBaEAANrOt.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GyXSXgsa4AU38rf.jpg" data-idx="19">
+          <img src="ファンアート/GyXSXgsa4AU38rf.jpg" alt="GyXSXgsa4AU38rf.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GyvZwJXa4AE8yrj.jpg" data-idx="20">
+          <img src="ファンアート/GyvZwJXa4AE8yrj.jpg" alt="GyvZwJXa4AE8yrj.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GzIoVi5aEAAkjuV.jpg" data-idx="21">
+          <img src="ファンアート/GzIoVi5aEAAkjuV.jpg" alt="GzIoVi5aEAAkjuV.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GzK1U7QbcAAO4CT.jpg" data-idx="22">
+          <img src="ファンアート/GzK1U7QbcAAO4CT.jpg" alt="GzK1U7QbcAAO4CT.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GzQvAJjbAAA-4bM.jpg" data-idx="23">
+          <img src="ファンアート/GzQvAJjbAAA-4bM.jpg" alt="GzQvAJjbAAA-4bM.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GziEaa7bkAExMCj.jpg" data-idx="24">
+          <img src="ファンアート/GziEaa7bkAExMCj.jpg" alt="GziEaa7bkAExMCj.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GziG_ZEa0AACecA.jpg" data-idx="25">
+          <img src="ファンアート/GziG_ZEa0AACecA.jpg" alt="GziG_ZEa0AACecA.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GzkUEG3bkAAgq3b.png" data-idx="26">
+          <img src="ファンアート/GzkUEG3bkAAgq3b.png" alt="GzkUEG3bkAAgq3b.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/Gzlf09daoAAFWY8.jpg" data-idx="27">
+          <img src="ファンアート/Gzlf09daoAAFWY8.jpg" alt="Gzlf09daoAAFWY8.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/GzwMKKcbYAAgm4i.jpg" data-idx="28">
+          <img src="ファンアート/GzwMKKcbYAAgm4i.jpg" alt="GzwMKKcbYAAgm4i.jpg" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/IMG_0891.png" data-idx="29">
+          <img src="ファンアート/IMG_0891.png" alt="IMG_0891.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item spoiler" data-src="ファンアート/SPOILER_.png" data-idx="30">
+          <img src="ファンアート/SPOILER_.png" alt="SPOILER_.png" loading="lazy">
+          <div class="spoiler-overlay">クリックで表示</div>
+        </div>
+        <div class="slide-item spoiler" data-src="ファンアート/SPOILER_2025.png" data-idx="31">
+          <img src="ファンアート/SPOILER_2025.png" alt="SPOILER_2025.png" loading="lazy">
+          <div class="spoiler-overlay">クリックで表示</div>
+        </div>
+        <div class="slide-item spoiler" data-src="ファンアート/SPOILER_１.png" data-idx="32">
+          <img src="ファンアート/SPOILER_１.png" alt="SPOILER_１.png" loading="lazy">
+          <div class="spoiler-overlay">クリックで表示</div>
+        </div>
+        <div class="slide-item" data-src="ファンアート/a6391b52db95eccd.png" data-idx="33">
+          <img src="ファンアート/a6391b52db95eccd.png" alt="a6391b52db95eccd.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/a8999b2ea6ec3dad.png" data-idx="34">
+          <img src="ファンアート/a8999b2ea6ec3dad.png" alt="a8999b2ea6ec3dad.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/bb3c9b937013feb8.png" data-idx="35">
+          <img src="ファンアート/bb3c9b937013feb8.png" alt="bb3c9b937013feb8.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/de1747e6c3f125ff.png" data-idx="36">
+          <img src="ファンアート/de1747e6c3f125ff.png" alt="de1747e6c3f125ff.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/e643e47fce825012.png" data-idx="37">
+          <img src="ファンアート/e643e47fce825012.png" alt="e643e47fce825012.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/image.png" data-idx="38">
+          <img src="ファンアート/image.png" alt="image.png" loading="lazy">
+          
+        </div>
+        <div class="slide-item" data-src="ファンアート/take2.png" data-idx="39">
+          <img src="ファンアート/take2.png" alt="take2.png" loading="lazy">
+          
+        </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -602,31 +543,32 @@ footer a:hover{color:var(--pink)}
 // PARTICLES
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
-let W, H, particles = [];
+let W, H;
 const EMOJIS = ['🐾','✦','♡','🎋','🐱','✿','⋆'];
 function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 resize(); window.addEventListener('resize', resize);
 class P {
   constructor(){ this.reset(true); }
   reset(init=false){
-    this.x = Math.random()*W; this.y = init ? Math.random()*H : H+30;
-    this.size = 12+Math.random()*14; this.speed = .3+Math.random()*.5;
-    this.opacity = .06+Math.random()*.1; this.rot = Math.random()*360;
-    this.rotSpeed = (Math.random()-.5)*1.5;
-    this.emoji = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+    this.x=Math.random()*W; this.y=init?Math.random()*H:H+30;
+    this.size=12+Math.random()*14; this.speed=.3+Math.random()*.5;
+    this.opacity=.06+Math.random()*.1; this.rot=Math.random()*360;
+    this.rotSpeed=(Math.random()-.5)*1.5;
+    this.emoji=EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
   }
-  update(){ this.y -= this.speed; this.rot += this.rotSpeed; if(this.y < -40) this.reset(); }
+  update(){ this.y-=this.speed; this.rot+=this.rotSpeed; if(this.y<-40)this.reset(); }
   draw(){
-    ctx.save(); ctx.globalAlpha = this.opacity; ctx.font = this.size+'px serif';
-    ctx.translate(this.x, this.y); ctx.rotate(this.rot*Math.PI/180);
-    ctx.fillText(this.emoji, -this.size/2, this.size/2); ctx.restore();
+    ctx.save(); ctx.globalAlpha=this.opacity; ctx.font=this.size+'px serif';
+    ctx.translate(this.x,this.y); ctx.rotate(this.rot*Math.PI/180);
+    ctx.fillText(this.emoji,-this.size/2,this.size/2); ctx.restore();
   }
 }
+const particles=[];
 for(let i=0;i<35;i++) particles.push(new P());
 (function loop(){ ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); })();
 
 // REVEAL
-const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.04});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.04});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
 // NAV
@@ -634,11 +576,11 @@ window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
   let c='';
   document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id;});
-  document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'#ff85b3':'';});
+  document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'#ff85b3':''});
 });
 
 // CURSOR SPARKLE
-document.addEventListener('mousemove', e=>{
+document.addEventListener('mousemove',e=>{
   if(Math.random()>.8){
     const s=document.createElement('div');
     s.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;z-index:9999;font-size:${10+Math.random()*12}px;animation:sparkle .6s forwards;transform:translate(-50%,-50%)`;
@@ -651,52 +593,51 @@ const ss=document.createElement('style');
 ss.textContent='@keyframes sparkle{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-160%) scale(0)}}';
 document.head.appendChild(ss);
 
+// SLIDER ARROWS
+function slideLeft(id){ document.getElementById(id).scrollBy({left:-550,behavior:'smooth'}); }
+function slideRight(id){ document.getElementById(id).scrollBy({left:550,behavior:'smooth'}); }
+
 // SPOILER
-document.querySelectorAll('.gi.spoiler').forEach(el=>{
-  el.addEventListener('click', e=>{
+document.querySelectorAll('.slide-item.spoiler').forEach(el=>{
+  el.addEventListener('click',e=>{
     if(!el.classList.contains('revealed')){ e.stopPropagation(); el.classList.add('revealed'); }
   });
 });
 
 // LIGHTBOX
-const lb = document.getElementById('lb');
-const lbImg = document.getElementById('lb-img');
-const lbCount = document.getElementById('lb-count');
-let allItems = [], curIdx = 0;
-
+const lb=document.getElementById('lb');
+const lbImg=document.getElementById('lb-img');
+const lbCount=document.getElementById('lb-count');
+let allItems=[], curIdx=0;
 function openLb(idx){
-  curIdx = idx;
-  lbImg.src = allItems[idx].dataset.src;
-  lbCount.textContent = (idx+1) + ' / ' + allItems.length;
-  lb.classList.add('open');
-  document.body.style.overflow='hidden';
+  curIdx=idx; lbImg.src=allItems[idx].dataset.src;
+  lbCount.textContent=(idx+1)+' / '+allItems.length;
+  lb.classList.add('open'); document.body.style.overflow='hidden';
 }
 function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
 function navLb(dir){
-  curIdx = (curIdx + dir + allItems.length) % allItems.length;
-  lbImg.src = allItems[curIdx].dataset.src;
-  lbCount.textContent = (curIdx+1) + ' / ' + allItems.length;
+  curIdx=(curIdx+dir+allItems.length)%allItems.length;
+  lbImg.src=allItems[curIdx].dataset.src;
+  lbCount.textContent=(curIdx+1)+' / '+allItems.length;
 }
-
-window.addEventListener('DOMContentLoaded', ()=>{
-  allItems = Array.from(document.querySelectorAll('.gi'));
-  allItems.forEach((el, i)=>{
-    el.addEventListener('click', ()=>{
-      if(el.classList.contains('spoiler') && !el.classList.contains('revealed')) return;
+window.addEventListener('DOMContentLoaded',()=>{
+  allItems=Array.from(document.querySelectorAll('.slide-item'));
+  allItems.forEach((el,i)=>{
+    el.addEventListener('click',()=>{
+      if(el.classList.contains('spoiler')&&!el.classList.contains('revealed')) return;
       openLb(i);
     });
   });
 });
-
-document.getElementById('lb-close').addEventListener('click', closeLb);
-document.getElementById('lb-prev').addEventListener('click', ()=>navLb(-1));
-document.getElementById('lb-next').addEventListener('click', ()=>navLb(1));
-lb.addEventListener('click', e=>{ if(e.target===lb) closeLb(); });
-document.addEventListener('keydown', e=>{
-  if(!lb.classList.contains('open')) return;
-  if(e.key==='Escape') closeLb();
-  if(e.key==='ArrowLeft') navLb(-1);
-  if(e.key==='ArrowRight') navLb(1);
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',()=>navLb(-1));
+document.getElementById('lb-next').addEventListener('click',()=>navLb(1));
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb();});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')navLb(-1);
+  if(e.key==='ArrowRight')navLb(1);
 });
 </script>
 </body>
