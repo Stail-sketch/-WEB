@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>たけねこ 🎋🐈 Official Site</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff85b3;--pink2:#ff5fa0;--pink-lt:#ffd6e8;--pink-pale:#fff0f7;
+  --mint:#5ee8c8;--mint2:#00d4a8;--yellow:#ffe566;--purple:#c97aff;--purple2:#a855f7;
+  --black:#2a1f2e;--mid:#6b4c7a;--white:#fffafc;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'M PLUS Rounded 1c','Hiragino Maru Gothic ProN',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,250,252,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:2px solid var(--pink-lt);display:flex;align-items:center;justify-content:space-between;padding:.6rem 2.5rem;transition:all .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(255,133,179,.15)}
+.logo{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.06em;display:flex;align-items:center;gap:.4rem;text-decoration:none}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--mid);font-weight:800;font-size:.88rem;position:relative;padding-bottom:3px;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--pink),var(--purple));border-radius:999px;transition:width .3s}
+.nav-links a:hover{color:var(--pink)}
+.nav-links a:hover::after{width:100%}
+
+/* HERO */
+#hero{min-height:100vh;background:linear-gradient(150deg,#ffe8f5 0%,#f3d8ff 35%,#d0f5f0 70%,#fff8c5 100%);display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;z-index:1}
+.hero-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4rem;max-width:1100px;width:100%}
+.img-wrap{position:relative;flex-shrink:0}
+.img-ring{position:absolute;inset:-20px;border-radius:50% 42% 50% 42%;background:conic-gradient(from 0deg,var(--pink),var(--mint),var(--yellow),var(--purple),var(--pink));animation:spin 6s linear infinite;filter:blur(1px)}
+.img-ring2{position:absolute;inset:-10px;background:white;border-radius:50% 42% 50% 42%}
+.img-ring3{position:absolute;inset:-6px;border-radius:50% 42% 50% 42%;background:conic-gradient(from 180deg,var(--mint),var(--yellow),var(--purple),var(--pink),var(--mint));animation:spin 10s linear infinite reverse;opacity:.4}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chara{width:320px;max-width:85vw;border-radius:50% 42% 50% 42%;object-fit:cover;object-position:top;display:block;position:relative;z-index:1;filter:drop-shadow(0 10px 40px rgba(255,133,179,.4));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.f-badge{position:absolute;background:white;border-radius:999px;padding:.3rem .8rem;font-size:.78rem;font-weight:800;box-shadow:0 4px 20px rgba(255,133,179,.25);border:2px solid var(--pink-lt);white-space:nowrap;animation:floatBadge 3s ease-in-out infinite}
+.fb1{top:-10px;right:-20px;animation-delay:0s;color:var(--pink)}
+.fb2{bottom:30px;right:-30px;animation-delay:.8s;color:var(--purple)}
+.fb3{bottom:-10px;left:-10px;animation-delay:1.6s;color:var(--mint2)}
+@keyframes floatBadge{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+.hero-text{text-align:center}
+.badge{display:inline-flex;align-items:center;gap:.4rem;background:white;color:var(--pink);border:2.5px solid var(--pink-lt);border-radius:999px;font-size:.82rem;font-weight:800;padding:.3rem 1rem;margin-bottom:1.2rem;letter-spacing:.08em;box-shadow:0 4px 16px rgba(255,133,179,.15)}
+.hname{font-size:clamp(3.2rem,9vw,6rem);font-weight:900;line-height:.95;background:linear-gradient(135deg,var(--pink) 0%,var(--purple) 45%,var(--mint2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.4rem;animation:textShine 3s linear infinite;background-size:200% auto}
+@keyframes textShine{to{background-position:200% center}}
+.hname-en{font-size:1rem;font-weight:800;letter-spacing:.28em;color:var(--mid);margin-bottom:1.2rem;opacity:.6}
+.hcatch{font-size:1.05rem;font-weight:700;color:var(--mid);margin-bottom:1.8rem;line-height:1.8}
+.htag{display:inline-block;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;border-radius:999px;padding:.45rem 1.4rem;font-size:.92rem;font-weight:800;letter-spacing:.05em;margin-bottom:2.2rem;box-shadow:0 4px 20px rgba(255,133,179,.45);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(255,133,179,.45)}50%{box-shadow:0 4px 35px rgba(255,133,179,.8),0 0 0 8px rgba(255,133,179,.1)}}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.8rem;border-radius:999px;font-weight:800;font-size:.95rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-4px)}
+.btn-p{background:linear-gradient(90deg,var(--pink),var(--purple));color:white;box-shadow:0 4px 20px rgba(255,133,179,.5)}
+.btn-p:hover{box-shadow:0 10px 35px rgba(255,133,179,.7)}
+.btn-o{background:white;color:var(--pink);border:2.5px solid var(--pink);box-shadow:0 2px 15px rgba(255,133,179,.2)}
+.btn-o:hover{background:var(--pink-pale);box-shadow:0 8px 25px rgba(255,133,179,.35)}
+.hero-deco{position:absolute;font-size:3rem;opacity:.07;pointer-events:none;user-select:none}
+.hd1{top:8%;left:4%;transform:rotate(-15deg)}
+.hd2{top:15%;right:5%;transform:rotate(20deg);font-size:2.5rem}
+.hd3{bottom:10%;left:8%;transform:rotate(10deg);font-size:3.5rem}
+.hd4{bottom:15%;right:4%;transform:rotate(-20deg)}
+.hd5{top:50%;left:2%;font-size:2rem}
+.hd6{top:45%;right:3%;font-size:2rem;transform:rotate(30deg)}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.si{max-width:1200px;margin:0 auto;padding:5.5rem 2rem}
+.st{text-align:center;margin-bottom:3.5rem}
+.st h2{display:inline-flex;align-items:center;gap:.5rem;position:relative;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;padding-bottom:.6rem}
+.st h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:4px;background:linear-gradient(90deg,var(--pink),var(--mint));border-radius:999px}
+.st p{color:var(--mid);font-weight:700;margin-top:1.2rem;font-size:.95rem}
+
+/* PROFILE */
+#profile{background:linear-gradient(180deg,#fff5fb 0%,#f5f0ff 100%)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.pc{background:white;border-radius:1.6rem;padding:1.4rem 1.6rem;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.08);display:flex;align-items:flex-start;gap:1rem;transition:all .25s;cursor:default}
+.pc:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(255,133,179,.2);border-color:var(--pink)}
+.pc.wide{grid-column:1/-1}
+.ci{font-size:1.6rem;flex-shrink:0;width:3.2rem;height:3.2rem;background:var(--pink-pale);border-radius:1rem;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.pc:hover .ci{transform:scale(1.15) rotate(-5deg)}
+.cl{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--pink);margin-bottom:.3rem}
+.cv{font-size:1rem;font-weight:700;color:var(--black);line-height:1.6}
+.cv.sm{font-size:.83rem;line-height:1.85}
+
+/* GALLERY */
+#gallery{background:linear-gradient(180deg,#f3eeff 0%,#fff0f7 100%)}
+.gallery-count{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;border-radius:999px;padding:.3rem 1rem;font-size:.82rem;font-weight:800;margin-top:.8rem}
+.ggrid{columns:4;column-gap:1.2rem}
+@media(max-width:1100px){.ggrid{columns:3}}
+@media(max-width:700px){.ggrid{columns:2}}
+@media(max-width:420px){.ggrid{columns:1}}
+.gi{break-inside:avoid;position:relative;overflow:hidden;border-radius:1.2rem;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:all .3s;cursor:pointer;margin-bottom:1.2rem;display:block}
+.gi:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(201,122,255,.35)}
+.gi img{width:100%;display:block;transition:transform .4s}
+.gi:hover img{transform:scale(1.04)}
+.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,46,.65) 0%,transparent 50%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity .3s}
+.gi:hover .gov{opacity:1}
+.gcap{color:white;font-weight:800;font-size:.85rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+/* SPOILER */
+.gi.spoiler img{filter:blur(22px);transition:filter .4s}
+.gi.spoiler.revealed img{filter:blur(0)}
+.spoiler-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(44,31,46,.35);color:white;font-weight:800;font-size:.95rem;text-align:center;gap:.5rem;transition:opacity .3s;pointer-events:none;z-index:2}
+.spoiler-overlay::before{content:'🔞';font-size:2rem}
+.gi.spoiler.revealed .spoiler-overlay{opacity:0}
+
+/* SNS */
+#sns{background:linear-gradient(180deg,#fff5fb 0%,#f0fff9 100%)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.3rem}
+.sc{background:white;border-radius:1.6rem;padding:1.8rem 1.2rem;text-align:center;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.08);text-decoration:none;color:var(--black);display:flex;flex-direction:column;align-items:center;gap:.8rem;font-weight:800;transition:all .25s;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.sc:hover{transform:translateY(-6px)}
+.sc:hover::before{opacity:1}
+.sic{width:4rem;height:4rem;border-radius:1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;transition:transform .3s;position:relative;z-index:1}
+.sc:hover .sic{transform:scale(1.15) rotate(-5deg)}
+.sn{font-size:1rem;position:relative;z-index:1}
+.sh{font-size:.78rem;color:var(--mid);font-weight:700;position:relative;z-index:1}
+.sc.tw .sic{background:rgba(29,161,242,.12);color:#1da1f2}
+.sc.tw:hover{border-color:#1da1f2;box-shadow:0 10px 30px rgba(29,161,242,.3)}
+.sc.tw::before{background:linear-gradient(135deg,rgba(29,161,242,.05),rgba(29,161,242,.1))}
+.sc.tv .sic{background:rgba(145,71,255,.12);color:#9147ff}
+.sc.tv:hover{border-color:#9147ff;box-shadow:0 10px 30px rgba(145,71,255,.3)}
+.sc.tv::before{background:linear-gradient(135deg,rgba(145,71,255,.05),rgba(145,71,255,.1))}
+.sc.ll .sic{background:rgba(255,107,157,.12);color:#ff6b9d}
+.sc.ll:hover{border-color:#ff6b9d;box-shadow:0 10px 30px rgba(255,107,157,.3)}
+.sc.ll::before{background:linear-gradient(135deg,rgba(255,107,157,.05),rgba(255,107,157,.1))}
+
+/* CONTACT */
+#contact{background:linear-gradient(160deg,#ffe8f5 0%,#f3d8ff 50%,#d0f5f0 100%)}
+.cbox{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-radius:2.4rem;padding:3.5rem 3rem;max-width:660px;margin:0 auto;border:2px solid rgba(255,133,179,.3);box-shadow:0 20px 60px rgba(255,133,179,.15);text-align:center}
+.cbox h3{font-size:1.6rem;font-weight:900;margin-bottom:.9rem;background:linear-gradient(90deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cbox p{color:var(--mid);font-weight:700;line-height:1.9;margin-bottom:2rem;font-size:.95rem}
+.chips{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem}
+.chip{background:var(--pink-pale);color:var(--pink);border:2px solid var(--pink-lt);border-radius:999px;padding:.35rem .9rem;font-size:.82rem;font-weight:800;transition:all .2s}
+.chip:hover{background:var(--pink);color:white;transform:scale(1.05)}
+
+/* FOOTER */
+footer{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:2.5rem 1.5rem;position:relative;z-index:1;line-height:2;font-size:.85rem;font-weight:700;overflow:hidden}
+.footer-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:120px;background:radial-gradient(ellipse,rgba(255,133,179,.2) 0%,transparent 70%);pointer-events:none}
+footer strong{color:var(--pink)}
+footer a{color:var(--mint);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--pink)}
+
+/* LIGHTBOX */
+#lb{position:fixed;inset:0;z-index:999;background:rgba(20,12,28,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1.5rem}
+#lb.open{opacity:1;pointer-events:all}
+#lb-img{max-width:92vw;max-height:90vh;border-radius:1.2rem;box-shadow:0 20px 80px rgba(0,0,0,.7);object-fit:contain}
+#lb-close{position:fixed;top:1.2rem;right:1.5rem;background:rgba(255,255,255,.12);border:none;color:white;font-size:1.8rem;width:3rem;height:3rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-weight:900}
+#lb-close:hover{background:rgba(255,133,179,.5)}
+#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:white;font-size:1.5rem;width:3rem;height:3rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#lb-prev{left:1rem}
+#lb-next{right:1rem}
+#lb-prev:hover,#lb-next:hover{background:rgba(255,133,179,.5)}
+#lb-count{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.85rem;font-weight:800;background:rgba(0,0,0,.4);padding:.3rem 1rem;border-radius:999px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:640px){
+  .chara{width:260px}
+  .nav-links{gap:.8rem}
+  .nav-links a{font-size:.78rem}
+  .pgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav id="nav">
+  <a href="#hero" class="logo">🎋🐈 たけねこ</a>
+  <ul class="nav-links">
+    <li><a href="#profile">プロフィール</a></li>
+    <li><a href="#gallery">支援絵</a></li>
+    <li><a href="#sns">SNS</a></li>
+    <li><a href="#contact">お仕事依頼</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="img-wrap">
+      <div class="img-ring"></div>
+      <div class="img-ring2"></div>
+      <div class="img-ring3"></div>
+      <img class="chara" src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png" alt="たけねこ">
+      <div class="f-badge fb1">🎮 LoL</div>
+      <div class="f-badge fb2">✦ VTuber</div>
+      <div class="f-badge fb3">🐾 ねこ</div>
+    </div>
+    <div class="hero-text">
+      <div class="badge">🎋 VTuber &amp; 配信者 🐈</div>
+      <h1 class="hname">たけねこ</h1>
+      <p class="hname-en">T A K E N E K O</p>
+      <p class="hcatch">サモナーズリフトに救済と粛清を🗡️<br>イブリンOTP ／ ねこVTuber</p>
+      <div class="htag">#ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</div>
+      <div class="hbtns">
+        <a href="#gallery" class="btn btn-p">🎨 支援絵を見る</a>
+        <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="btn btn-o">𝕏 フォローする</a>
+      </div>
+    </div>
+  </div>
+  <span class="hero-deco hd1">🐾</span>
+  <span class="hero-deco hd2">🎋</span>
+  <span class="hero-deco hd3">🐾</span>
+  <span class="hero-deco hd4">🎋</span>
+  <span class="hero-deco hd5">♡</span>
+  <span class="hero-deco hd6">✦</span>
+</section>
+
+<section id="profile">
+  <div class="si">
+    <div class="st rv"><h2>🐈 たけねこちゃんとは</h2><p>ねこのVTuber ／ サモナーズリフトの住人</p></div>
+    <div class="pgrid">
+      <div class="pc rv"><div class="ci">🎋</div><div><div class="cl">なまえ</div><div class="cv">たけねこ</div></div></div>
+      <div class="pc rv"><div class="ci">🎂</div><div><div class="cl">とし ／ たんじょうび</div><div class="cv">２０歳 ／ 5月7日生まれ</div></div></div>
+      <div class="pc rv"><div class="ci">💖</div><div><div class="cl">すきなもの</div><div class="cv">酒🍶　タバコ🚬　昼寝😴</div></div></div>
+      <div class="pc rv"><div class="ci">🎮</div><div><div class="cl">メインゲーム</div><div class="cv">League of Legends<br><span style="font-size:.85rem;color:var(--mid)">イブリンOTP</span></div></div></div>
+      <div class="pc rv"><div class="ci">🎨</div><div><div class="cl">ママ（キャラクターデザイン）</div><div class="cv">八百枝豆ノ助 様</div></div></div>
+      <div class="pc rv"><div class="ci">✨</div><div><div class="cl">パパ（Live2D）</div><div class="cv">冬乃グミ 様</div></div></div>
+      <div class="pc wide rv"><div class="ci">😤</div><div><div class="cl">きらいなもの</div><div class="cv sm">スタックの一生たまらないスモルダー　／　飛んでるだけのクイン　／　TOPでレンジ出したのに大敗北フィードするヴェイン　／　ADCと喧嘩して自陣JG勝手に食い始めるリーシンSUP　／　注意ピン炊いてるのにガンクを食らいまくってJGになぜか？ピンを炊くアカリ　／　重症も積まず視界も取らないでチャットファイトしてるナミ　／　レーン負けたのに重傷も積まずに負け続けるモルデカイザー　／　降参入れることしかできない敗北者の皆さん　等</div></div></div>
+      <div class="pc wide rv" style="background:linear-gradient(90deg,#fff0f7,#f3eeff);border-color:var(--purple)">
+        <div class="ci" style="background:#f3eeff">🏷️</div>
+        <div>
+          <div class="cl" style="color:var(--purple)">ファンタグ</div>
+          <div class="cv" style="font-size:1.3rem;color:var(--purple)">#ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</div>
+          <div style="font-size:.8rem;color:var(--mid);font-weight:700;margin-top:.4rem">FA・クリップ・感想・買い物メモなどにお使いください🐈</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="si">
+    <div class="st rv">
+      <h2>🎨 支援絵ギャラリー</h2>
+      <p>みんなからもらった大切な支援絵たち 🐾</p>
+      <div class="gallery-count">🖼️ 60枚</div>
+    </div>
+    <div class="ggrid">
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/0625a78a88bb6c1c.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/0625a78a88bb6c1c.png" alt="0625a78a88bb6c1c.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/16_20250617131135.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/16_20250617131135.jpg" alt="16_20250617131135.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250303---1.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250303---1.png" alt="20250303---1.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250325---.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250325---.png" alt="20250325---.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/20250327-仕事-たけねこ様-清書-透過キャラ.png" alt="20250327-仕事-たけねこ様-清書-透過キャラ.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/254fb08680c90e1e.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/254fb08680c90e1e.png" alt="254fb08680c90e1e.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.output.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.output.png" alt="2749344-1.output.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/2749344-1.png" alt="2749344-1.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/32684.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/32684.png" alt="32684.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448-1.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448-1.png" alt="3268448-1.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/3268448.png" alt="3268448.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/374c74bffe5c39d7.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/374c74bffe5c39d7.png" alt="374c74bffe5c39d7.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/5968efc0b8f03826.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/5968efc0b8f03826.png" alt="5968efc0b8f03826.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/629976f03d134f53.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/629976f03d134f53.png" alt="629976f03d134f53.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" alt="6pwVu24g86A7KxltMpry3jhrKA0hAzmSjFdRqtKg.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/88_20250618141851.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/88_20250618141851.png" alt="88_20250618141851.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg" alt="8USFdbAapmGD1zdc8DnAwpgpXfQMzq0wE4gLCrd2.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8d6bd5e58594b847.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/8d6bd5e58594b847.png" alt="8d6bd5e58594b847.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png" alt="AsJ9vnKjFzvcY3a5FQqFhPWyeN4EAlcc49RSWJj1.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0ArVoZa4AA0_5S.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0ArVoZa4AA0_5S.jpg" alt="G0ArVoZa4AA0_5S.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0VLUmkaEAAa-sm.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0VLUmkaEAAa-sm.png" alt="G0VLUmkaEAAa-sm.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0W9m90bcAEUyYU.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G0W9m90bcAEUyYU.jpg" alt="G0W9m90bcAEUyYU.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G3eZdW2XYAAMSwB.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G3eZdW2XYAAMSwB.png" alt="G3eZdW2XYAAMSwB.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G54Ixw6a4AEtETa.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G54Ixw6a4AEtETa.jpg" alt="G54Ixw6a4AEtETa.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G7ztAz8aoAA8rP-.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/G7ztAz8aoAA8rP-.jpg" alt="G7ztAz8aoAA8rP-.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GwIj97obYAA63n_.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GwIj97obYAA63n_.jpg" alt="GwIj97obYAA63n_.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gwv8mhEbgAIgRRW.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gwv8mhEbgAIgRRW.jpg" alt="Gwv8mhEbgAIgRRW.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gx-vlSZb0AANBzg.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gx-vlSZb0AANBzg.jpg" alt="Gx-vlSZb0AANBzg.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GxmgvKJaoAAHUPr.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GxmgvKJaoAAHUPr.jpg" alt="GxmgvKJaoAAHUPr.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyFf3AIaEAM_aLN.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyFf3AIaEAM_aLN.jpg" alt="GyFf3AIaEAM_aLN.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyHRZBBaEAANrOt.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyHRZBBaEAANrOt.jpg" alt="GyHRZBBaEAANrOt.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyXSXgsa4AU38rf.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyXSXgsa4AU38rf.jpg" alt="GyXSXgsa4AU38rf.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyvZwJXa4AE8yrj.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GyvZwJXa4AE8yrj.jpg" alt="GyvZwJXa4AE8yrj.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzIoVi5aEAAkjuV.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzIoVi5aEAAkjuV.jpg" alt="GzIoVi5aEAAkjuV.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzK1U7QbcAAO4CT.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzK1U7QbcAAO4CT.jpg" alt="GzK1U7QbcAAO4CT.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzQvAJjbAAA-4bM.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzQvAJjbAAA-4bM.jpg" alt="GzQvAJjbAAA-4bM.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziEaa7bkAExMCj.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziEaa7bkAExMCj.jpg" alt="GziEaa7bkAExMCj.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziG_ZEa0AACecA.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GziG_ZEa0AACecA.jpg" alt="GziG_ZEa0AACecA.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzkUEG3bkAAgq3b.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzkUEG3bkAAgq3b.png" alt="GzkUEG3bkAAgq3b.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gzlf09daoAAFWY8.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Gzlf09daoAAFWY8.jpg" alt="Gzlf09daoAAFWY8.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzwMKKcbYAAgm4i.jpg">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/GzwMKKcbYAAgm4i.jpg" alt="GzwMKKcbYAAgm4i.jpg" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0482.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0482.png" alt="IMG_0482.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0891.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_0891.png" alt="IMG_0891.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_1098.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/IMG_1098.png" alt="IMG_1098.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" alt="Kaq6frXeSXg3ZGNxyNDqse1Qh4BVSviSabxS7eL3.gif" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/PXaM1piPU24PzZc1751242562_1751242586.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/PXaM1piPU24PzZc1751242562_1751242586.png" alt="PXaM1piPU24PzZc1751242562_1751242586.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_.png" alt="SPOILER_.png" loading="lazy">
+        <div class="spoiler-overlay">クリックで表示</div>
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_2025.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_2025.png" alt="SPOILER_2025.png" loading="lazy">
+        <div class="spoiler-overlay">クリックで表示</div>
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv spoiler" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_１.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/SPOILER_１.png" alt="SPOILER_１.png" loading="lazy">
+        <div class="spoiler-overlay">クリックで表示</div>
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a6391b52db95eccd.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a6391b52db95eccd.png" alt="a6391b52db95eccd.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a8999b2ea6ec3dad.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/a8999b2ea6ec3dad.png" alt="a8999b2ea6ec3dad.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/bb3c9b937013feb8.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/bb3c9b937013feb8.png" alt="bb3c9b937013feb8.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/de1747e6c3f125ff.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/de1747e6c3f125ff.png" alt="de1747e6c3f125ff.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/e643e47fce825012.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/e643e47fce825012.png" alt="e643e47fce825012.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/santa.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/santa.png" alt="santa.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take.png" alt="take.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take2.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/take2.png" alt="take2.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/tttt.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/tttt.png" alt="tttt.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-1.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-1.png" alt="たけねこ様　２-1.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+      <div class="gi rv" data-src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-2.png">
+        <img src="gigafile-0310-c943269f6c04a291bcc0f1601d5847ec/たけねこ様　２-2.png" alt="たけねこ様　２-2.png" loading="lazy">
+        
+        <div class="gov"><div class="gcap">🎨 支援絵</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sns">
+  <div class="si">
+    <div class="st rv"><h2>🔗 SNSリンク</h2><p>各種SNSはこちらから！</p></div>
+    <div class="sgrid">
+      <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="sc tw rv">
+        <div class="sic">𝕏</div><div class="sn">X (Twitter)</div><div class="sh">@TAKENEKOchan</div>
+      </a>
+      <a href="https://www.twitch.tv/takenekooooo" target="_blank" rel="noopener" class="sc tv rv">
+        <div class="sic">📡</div><div class="sn">Twitch</div><div class="sh">配信はこちら！</div>
+      </a>
+      <a href="https://lit.link/takenekochan" target="_blank" rel="noopener" class="sc ll rv">
+        <div class="sic">🔗</div><div class="sn">lit.link</div><div class="sh">リンクまとめ</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="si">
+    <div class="st rv"><h2>✉️ お仕事依頼</h2></div>
+    <div class="cbox rv">
+      <h3>🐾 お仕事・コラボのご依頼</h3>
+      <p>案件・コラボ・イベント参加など、<br>お仕事のご依頼はXのDMにてお願いします！<br><br><strong style="color:var(--pink)">対応できること（例）</strong></p>
+      <div class="chips">
+        <span class="chip">🎮 ゲームコラボ</span>
+        <span class="chip">📢 案件配信</span>
+        <span class="chip">🏆 大会・イベント</span>
+        <span class="chip">✂️ 切り抜き許可</span>
+        <span class="chip">🖼️ FA大歓迎</span>
+      </div>
+      <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="btn btn-p" style="font-size:1rem;padding:.9rem 2.4rem">𝕏 DMを送る</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-glow"></div>
+  <p>&copy; 2025 <strong>たけねこ 🎋🐈</strong> All Rights Reserved<br>
+  <small>キャラクターデザイン：八百枝豆ノ助様　／　Live2D：冬乃グミ様<br>
+  <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener">@TAKENEKOchan</a>　／
+  <a href="https://lit.link/takenekochan" target="_blank" rel="noopener">lit.link/takenekochan</a></small></p>
+</footer>
+
+<div id="lb">
+  <button id="lb-close">✕</button>
+  <button id="lb-prev">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">&#8250;</button>
+  <div id="lb-count"></div>
+</div>
+
+<script>
+// PARTICLES
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+const EMOJIS = ['🐾','✦','♡','🎋','🐱','✿','⋆'];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+class P {
+  constructor(){ this.reset(true); }
+  reset(init=false){
+    this.x = Math.random()*W; this.y = init ? Math.random()*H : H+30;
+    this.size = 12+Math.random()*14; this.speed = .3+Math.random()*.5;
+    this.opacity = .06+Math.random()*.1; this.rot = Math.random()*360;
+    this.rotSpeed = (Math.random()-.5)*1.5;
+    this.emoji = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+  }
+  update(){ this.y -= this.speed; this.rot += this.rotSpeed; if(this.y < -40) this.reset(); }
+  draw(){
+    ctx.save(); ctx.globalAlpha = this.opacity; ctx.font = this.size+'px serif';
+    ctx.translate(this.x, this.y); ctx.rotate(this.rot*Math.PI/180);
+    ctx.fillText(this.emoji, -this.size/2, this.size/2); ctx.restore();
+  }
+}
+for(let i=0;i<35;i++) particles.push(new P());
+(function loop(){ ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); })();
+
+// REVEAL
+const obs = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.04});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+  let c='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'#ff85b3':'';});
+});
+
+// CURSOR SPARKLE
+document.addEventListener('mousemove', e=>{
+  if(Math.random()>.8){
+    const s=document.createElement('div');
+    s.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;z-index:9999;font-size:${10+Math.random()*12}px;animation:sparkle .6s forwards;transform:translate(-50%,-50%)`;
+    s.textContent=['✦','♡','🐾','⋆'][Math.floor(Math.random()*4)];
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),600);
+  }
+});
+const ss=document.createElement('style');
+ss.textContent='@keyframes sparkle{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-160%) scale(0)}}';
+document.head.appendChild(ss);
+
+// SPOILER
+document.querySelectorAll('.gi.spoiler').forEach(el=>{
+  el.addEventListener('click', e=>{
+    if(!el.classList.contains('revealed')){ e.stopPropagation(); el.classList.add('revealed'); }
+  });
+});
+
+// LIGHTBOX
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+const lbCount = document.getElementById('lb-count');
+let allItems = [], curIdx = 0;
+
+function openLb(idx){
+  curIdx = idx;
+  lbImg.src = allItems[idx].dataset.src;
+  lbCount.textContent = (idx+1) + ' / ' + allItems.length;
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+function navLb(dir){
+  curIdx = (curIdx + dir + allItems.length) % allItems.length;
+  lbImg.src = allItems[curIdx].dataset.src;
+  lbCount.textContent = (curIdx+1) + ' / ' + allItems.length;
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  allItems = Array.from(document.querySelectorAll('.gi'));
+  allItems.forEach((el, i)=>{
+    el.addEventListener('click', ()=>{
+      if(el.classList.contains('spoiler') && !el.classList.contains('revealed')) return;
+      openLb(i);
+    });
+  });
+});
+
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lb-prev').addEventListener('click', ()=>navLb(-1));
+document.getElementById('lb-next').addEventListener('click', ()=>navLb(1));
+lb.addEventListener('click', e=>{ if(e.target===lb) closeLb(); });
+document.addEventListener('keydown', e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowLeft') navLb(-1);
+  if(e.key==='ArrowRight') navLb(1);
+});
+</script>
+</body>
+</html>
