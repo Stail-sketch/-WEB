@@ -75,15 +75,41 @@ section{position:relative}
 
 /* PROFILE */
 #profile{background:linear-gradient(180deg,#fff5fb 0%,#f5f0ff 100%)}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.pgrid{display:flex;flex-direction:column;gap:2.4rem}
+.pg-label{font-size:.8rem;font-weight:900;letter-spacing:.18em;color:var(--mid);opacity:.65;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;text-transform:uppercase}
+.pg-label::before{content:'';height:2px;width:1.8rem;background:linear-gradient(90deg,var(--pink),var(--purple));border-radius:999px;flex-shrink:0}
+.pg-label::after{content:'';flex:1;height:1.5px;background:linear-gradient(90deg,var(--pink-lt),transparent);border-radius:999px}
+.pgrid-sub{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
 .pc{background:white;border-radius:1.8rem;padding:1.6rem 1.8rem;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.08);display:flex;align-items:flex-start;gap:1.2rem;transition:all .25s;cursor:default}
-.pc:hover{transform:translateY(-5px);box-shadow:0 12px 35px rgba(255,133,179,.2);border-color:var(--pink)}
+.pc:hover{transform:translateY(-5px);box-shadow:0 14px 38px rgba(0,0,0,.1)}
 .pc.wide{grid-column:1/-1}
-.ci{font-size:1.8rem;flex-shrink:0;width:3.6rem;height:3.6rem;background:var(--pink-pale);border-radius:1.1rem;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.ci{font-size:1.8rem;flex-shrink:0;width:3.6rem;height:3.6rem;border-radius:1.1rem;display:flex;align-items:center;justify-content:center;transition:transform .2s;background:var(--pink-pale)}
 .pc:hover .ci{transform:scale(1.15) rotate(-5deg)}
 .cl{font-size:.88rem;font-weight:800;letter-spacing:.1em;color:var(--pink);margin-bottom:.35rem}
 .cv{font-size:1.15rem;font-weight:700;color:var(--black);line-height:1.6}
 .cv.sm{font-size:.95rem;line-height:1.9}
+/* card color variants */
+.pc-a{background:linear-gradient(135deg,#fff0f7,#ffe4f2);border-color:#ffcce6}
+.pc-a .ci{background:linear-gradient(135deg,#ff85b3,#ff5fa0);color:white}
+.pc-a .cl{color:#e84080}
+.pc-b{background:linear-gradient(135deg,#fff9e0,#fff0c8);border-color:#ffe898}
+.pc-b .ci{background:linear-gradient(135deg,#ffcc44,#f59e0b);color:white}
+.pc-b .cl{color:#c97c00}
+.pc-c{background:linear-gradient(135deg,#fff0f2,#ffe4e8);border-color:#ffb8c4}
+.pc-c .ci{background:linear-gradient(135deg,#ff6b9d,#ef4444);color:white}
+.pc-c .cl{color:#e03d5c}
+.pc-d{background:linear-gradient(135deg,#edf0ff,#e4e8ff);border-color:#b8c4ff}
+.pc-d .ci{background:linear-gradient(135deg,#6366f1,#3b82f6);color:white}
+.pc-d .cl{color:#4f58e0}
+.pc-e{background:linear-gradient(135deg,#f5eeff,#ede0ff);border-color:#d4b0ff}
+.pc-e .ci{background:linear-gradient(135deg,#c97aff,#9333ea);color:white}
+.pc-e .cl{color:#9333ea}
+.pc-f{background:linear-gradient(135deg,#e0fff8,#d0f8ef);border-color:#90e0cc}
+.pc-f .ci{background:linear-gradient(135deg,#5ee8c8,#00d4a8);color:white}
+.pc-f .cl{color:#00a882}
+.pc-g{background:linear-gradient(135deg,#f0ecff,#ebe0ff);border-color:#ccb0ff}
+.pc-g .ci{background:linear-gradient(135deg,#7c3aed,#c026d3);color:white}
+.pc-g .cl{color:#7c3aed}
 
 /* ===== GALLERY / SLIDER ===== */
 #gallery{background:linear-gradient(180deg,#f3eeff 0%,#fff0f7 100%)}
@@ -229,21 +255,45 @@ footer a:hover{color:var(--pink)}
   <div class="si">
     <div class="st rv"><h2>🐈 たけねこちゃんとは</h2><p>ねこのVTuber ／ サモナーズリフトの住人</p></div>
     <div class="pgrid">
-      <div class="pc rv"><div class="ci">🎋</div><div><div class="cl">なまえ</div><div class="cv">たけねこ</div></div></div>
-      <div class="pc rv"><div class="ci">🎂</div><div><div class="cl">とし ／ たんじょうび</div><div class="cv">２０歳 ／ 5月7日生まれ</div></div></div>
-      <div class="pc rv"><div class="ci">💖</div><div><div class="cl">すきなもの</div><div class="cv">酒🍶　タバコ🚬　昼寝😴</div></div></div>
-      <div class="pc rv"><div class="ci">🎮</div><div><div class="cl">メインゲーム</div><div class="cv">League of Legends<br><span style="font-size:.85rem;color:var(--mid)">イブリンOTP</span></div></div></div>
-      <div class="pc rv"><div class="ci">🎨</div><div><div class="cl">ママ（キャラクターデザイン）</div><div class="cv">八百枝豆ノ助 様</div></div></div>
-      <div class="pc rv"><div class="ci">✨</div><div><div class="cl">パパ（Live2D）</div><div class="cv">冬乃グミ 様</div></div></div>
-      <div class="pc wide rv"><div class="ci">😤</div><div><div class="cl">きらいなもの</div><div class="cv sm">スタックの一生たまらないスモルダー　／　飛んでるだけのクイン　／　TOPでレンジ出したのに大敗北フィードするヴェイン　／　ADCと喧嘩して自陣JG勝手に食い始めるリーシンSUP　／　注意ピン炊いてるのにガンクを食らいまくってJGになぜか？ピンを炊くアカリ　／　重症も積まず視界も取らないでチャットファイトしてるナミ　／　レーン負けたのに重傷も積まずに負け続けるモルデカイザー　／　降参入れることしかできない敗北者の皆さん　等</div></div></div>
-      <div class="pc wide rv" style="background:linear-gradient(90deg,#fff0f7,#f3eeff);border-color:var(--purple)">
-        <div class="ci" style="background:#f3eeff">🏷️</div>
-        <div>
-          <div class="cl" style="color:var(--purple)">ファンタグ</div>
-          <div class="cv" style="font-size:1.3rem;color:var(--purple)">#ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</div>
-          <div style="font-size:.8rem;color:var(--mid);font-weight:700;margin-top:.4rem">FA・クリップ・感想・買い物メモなどにお使いください🐈</div>
+
+      <!-- 基本情報 -->
+      <div class="pg-group rv">
+        <div class="pg-label">🐾 基本情報</div>
+        <div class="pgrid-sub">
+          <div class="pc pc-a"><div class="ci">🎋</div><div><div class="cl">なまえ</div><div class="cv">たけねこ</div></div></div>
+          <div class="pc pc-b"><div class="ci">🎂</div><div><div class="cl">とし ／ たんじょうび</div><div class="cv">２０歳 ／ 5月7日生まれ</div></div></div>
         </div>
       </div>
+
+      <!-- すき・きらい -->
+      <div class="pg-group rv">
+        <div class="pg-label">💝 すき・きらい</div>
+        <div class="pgrid-sub">
+          <div class="pc pc-c"><div class="ci">💖</div><div><div class="cl">すきなもの</div><div class="cv">酒🍶　タバコ🚬　昼寝😴</div></div></div>
+          <div class="pc pc-d"><div class="ci">🎮</div><div><div class="cl">メインゲーム</div><div class="cv">League of Legends<br><span style="font-size:.85rem;color:var(--mid)">イブリンOTP</span></div></div></div>
+          <div class="pc pc-g wide"><div class="ci">😤</div><div><div class="cl">きらいなもの</div><div class="cv sm">スタックの一生たまらないスモルダー　／　飛んでるだけのクイン　／　TOPでレンジ出したのに大敗北フィードするヴェイン　／　ADCと喧嘩して自陣JG勝手に食い始めるリーシンSUP　／　注意ピン炊いてるのにガンクを食らいまくってJGになぜか？ピンを炊くアカリ　／　重症も積まず視界も取らないでチャットファイトしてるナミ　／　レーン負けたのに重傷も積まずに負け続けるモルデカイザー　／　降参入れることしかできない敗北者の皆さん　等</div></div></div>
+        </div>
+      </div>
+
+      <!-- 制作スタッフ -->
+      <div class="pg-group rv">
+        <div class="pg-label">🎨 制作スタッフ</div>
+        <div class="pgrid-sub">
+          <div class="pc pc-e"><div class="ci">🎨</div><div><div class="cl">ママ（キャラクターデザイン）</div><div class="cv">八百枝豆ノ助 様</div></div></div>
+          <div class="pc pc-f"><div class="ci">✨</div><div><div class="cl">パパ（Live2D）</div><div class="cv">冬乃グミ 様</div></div></div>
+        </div>
+      </div>
+
+      <!-- ファンタグ -->
+      <div class="pc wide rv" style="background:linear-gradient(135deg,#fff0f7,#f3eeff);border-color:var(--purple);box-shadow:0 4px 24px rgba(201,122,255,.18)">
+        <div class="ci" style="background:linear-gradient(135deg,var(--pink),var(--purple));color:white">🏷️</div>
+        <div>
+          <div class="cl" style="color:var(--purple)">ファンタグ</div>
+          <div class="cv" style="font-size:1.4rem;color:var(--purple)">#ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</div>
+          <div style="font-size:.88rem;color:var(--mid);font-weight:700;margin-top:.4rem">FA・クリップ・感想・買い物メモなどにお使いください🐈</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
