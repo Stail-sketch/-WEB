@@ -225,9 +225,62 @@ footer a:hover{color:var(--pink)}
   .pgrid{grid-template-columns:1fr}
   .slide-item{width:200px}
 }
+
+/* ====== AURORA KEYFRAMES (shared) ====== */
+@keyframes aurora{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* ====== SPLASH ====== */
+#splash{position:fixed;inset:0;z-index:99999;background:linear-gradient(-45deg,#ff85b3,#c97aff,#5ee8c8,#ff6ba8,#a78bfa);background-size:400% 400%;animation:aurora 4s ease infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease;text-align:center;gap:1rem}
+#splash.fade{opacity:0;pointer-events:none}
+.splash-logo{font-size:clamp(2.2rem,8vw,3.8rem);font-weight:900;color:white;text-shadow:0 4px 24px rgba(0,0,0,.18);animation:splashBounce .8s ease-in-out infinite alternate}
+@keyframes splashBounce{from{transform:translateY(0) scale(1)}to{transform:translateY(-12px) scale(1.04)}}
+.splash-load{color:rgba(255,255,255,.88);font-size:1.15rem;font-weight:800;letter-spacing:.14em;animation:splashPulse 1s ease-in-out infinite alternate}
+@keyframes splashPulse{from{opacity:.5}to{opacity:1}}
+.splash-paw{position:fixed;pointer-events:none;animation:splashFloat var(--dur,2s) ease-in-out infinite var(--del,0s)}
+@keyframes splashFloat{0%,100%{transform:translateY(0) rotate(-5deg);opacity:.5}50%{transform:translateY(-28px) rotate(15deg);opacity:.85}}
+
+/* ====== HERO – オーロラグラデーション ====== */
+#hero{background:linear-gradient(-45deg,#ffe8f5,#f0d8ff,#d0f5f0,#fff8c5,#ffd6e8,#e8e0ff)!important;background-size:400% 400%!important;animation:aurora 14s ease infinite!important}
+
+/* ====== ヒーロー キラキラパーティクル ====== */
+.hero-spk{position:fixed;pointer-events:none;z-index:5;animation:spkPop .9s forwards}
+@keyframes spkPop{0%{opacity:0;transform:scale(0) rotate(-10deg)}35%{opacity:1;transform:scale(1.4) rotate(15deg)}100%{opacity:0;transform:scale(.2) rotate(40deg) translateY(-18px)}}
+
+/* ====== カスタムカーソル ====== */
+body{cursor:none}
+#cur{position:fixed;pointer-events:none;z-index:99998;font-size:1.5rem;transform:translate(-50%,-50%);will-change:left,top;transition:transform .05s}
+.cur-trail{position:fixed;pointer-events:none;z-index:99997;transform:translate(-50%,-50%);animation:trailFade .85s forwards}
+@keyframes trailFade{0%{opacity:.75;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-230%) scale(.1)}}
+.cur-burst{position:fixed;pointer-events:none;z-index:99997;font-size:1rem;transform:translate(-50%,-50%);transition:all .5s cubic-bezier(.2,.8,.2,1)}
+
+/* ====== BGM ボタン ====== */
+#bgm-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:500;width:3.4rem;height:3.4rem;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 22px rgba(255,133,179,.45);transition:all .25s}
+#bgm-btn:hover{transform:scale(1.15);box-shadow:0 6px 32px rgba(255,133,179,.65)}
+#bgm-btn.muted{background:linear-gradient(135deg,#bbb,#999);box-shadow:none;opacity:.75}
+
+/* ====== Twitter タイムライン ====== */
+.tw-wrap{max-width:440px;margin:2.5rem auto 0;border-radius:1.6rem;overflow:hidden;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.1)}
+@media(max-width:640px){#bgm-btn{bottom:1.2rem;right:1.2rem;width:3rem;height:3rem;font-size:1.1rem}}
 </style>
 </head>
 <body>
+
+<!-- ====== SPLASH ====== -->
+<div id="splash">
+  <div id="splash-paws"></div>
+  <div class="splash-logo">🎋🐈 たけねこ</div>
+  <div class="splash-load">🐾 Loading...</div>
+</div>
+
+<!-- カスタムカーソル -->
+<div id="cur">🐾</div>
+
+<!-- BGM -->
+<audio id="bgm" loop preload="none">
+  <!-- bgm.mp3 をこのフォルダに置いてください（dova-s.jp 等のフリー音源） -->
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+<button id="bgm-btn" class="muted" title="BGM ON/OFF">🎵</button>
 
 <canvas id="particles"></canvas>
 
@@ -587,6 +640,18 @@ footer a:hover{color:var(--pink)}
         <div class="sic">🔗</div><div class="sn">lit.link</div><div class="sh">リンクまとめ</div>
       </a>
     </div>
+    <!-- Twitter タイムライン -->
+    <div class="tw-wrap rv">
+      <a class="twitter-timeline"
+         data-theme="light"
+         data-tweet-limit="5"
+         data-chrome="noheader nofooter noborders transparent"
+         data-lang="ja"
+         href="https://twitter.com/TAKENEKOchan">
+        Tweets by @TAKENEKOchan
+      </a>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </section>
 
@@ -755,19 +820,141 @@ window.addEventListener('scroll',()=>{
   document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+c?'#ff85b3':''});
 });
 
-// CURSOR SPARKLE
-document.addEventListener('mousemove',e=>{
-  if(Math.random()>.8){
-    const s=document.createElement('div');
-    s.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;pointer-events:none;z-index:9999;font-size:${10+Math.random()*12}px;animation:sparkle .6s forwards;transform:translate(-50%,-50%)`;
-    s.textContent=['✦','♡','🐾','⋆'][Math.floor(Math.random()*4)];
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),600);
+// ====== SPLASH ======
+(function(){
+  const splash=document.getElementById('splash');
+  const paws=document.getElementById('splash-paws');
+  // ランダム肉球を散らす
+  for(let i=0;i<10;i++){
+    const p=document.createElement('span');
+    p.className='splash-paw';
+    p.textContent='🐾';
+    p.style.cssText=`left:${Math.random()*100}vw;top:${Math.random()*100}vh;font-size:${1+Math.random()*2.2}rem;--dur:${1.4+Math.random()*1.6}s;--del:${Math.random()*1.5}s;position:fixed;pointer-events:none;`;
+    paws.appendChild(p);
   }
-});
-const ss=document.createElement('style');
-ss.textContent='@keyframes sparkle{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-160%) scale(0)}}';
-document.head.appendChild(ss);
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{
+      splash.classList.add('fade');
+      setTimeout(()=>splash.remove(),850);
+    },1800);
+  });
+})();
+
+// ====== CUSTOM CURSOR + TRAIL + CLICK BURST ======
+(function(){
+  const cur=document.getElementById('cur');
+  const TRAIL=['🐾','♡','✦','⋆'];
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+    if(Math.random()>.55){
+      const t=document.createElement('div');
+      t.className='cur-trail';
+      t.textContent=TRAIL[Math.floor(Math.random()*TRAIL.length)];
+      t.style.cssText=`left:${mx}px;top:${my}px;font-size:${9+Math.random()*10}px`;
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(),850);
+    }
+  });
+  document.addEventListener('click',e=>{
+    for(let i=0;i<7;i++){
+      const b=document.createElement('div');
+      b.className='cur-burst';
+      b.textContent='💖';
+      b.style.left=e.clientX+'px'; b.style.top=e.clientY+'px';
+      document.body.appendChild(b);
+      const ang=(i/7)*Math.PI*2;
+      const d=35+Math.random()*45;
+      const dx=Math.cos(ang)*d, dy=Math.sin(ang)*d-20;
+      requestAnimationFrame(()=>{
+        b.style.transform=`translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0)`;
+        b.style.opacity='0';
+      });
+      setTimeout(()=>b.remove(),520);
+    }
+  });
+  document.addEventListener('mouseleave',()=>{cur.style.opacity='0';});
+  document.addEventListener('mouseenter',()=>{cur.style.opacity='1';});
+})();
+
+// ====== ヒーロー キラキラパーティクル ======
+(function(){
+  function spawnSparkle(){
+    const wrap=document.querySelector('.img-wrap');
+    if(!wrap) return;
+    const r=wrap.getBoundingClientRect();
+    if(r.width===0) return;
+    const s=document.createElement('div');
+    s.className='hero-spk';
+    s.textContent=['✨','⭐','💫','🌟'][Math.floor(Math.random()*4)];
+    s.style.cssText=`left:${r.left+Math.random()*r.width}px;top:${r.top+Math.random()*r.height}px;font-size:${10+Math.random()*14}px`;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),900);
+  }
+  setInterval(spawnSparkle,400);
+})();
+
+// ====== 視差スクロール（マウスでキャラが揺れる）======
+(function(){
+  const imgWrap=document.querySelector('.img-wrap');
+  if(!imgWrap) return;
+  document.addEventListener('mousemove',e=>{
+    const hero=document.getElementById('hero');
+    if(!hero) return;
+    const r=hero.getBoundingClientRect();
+    if(r.bottom<0||r.top>window.innerHeight) return;
+    const cx=(e.clientX/window.innerWidth-.5)*18;
+    const cy=(e.clientY/window.innerHeight-.5)*12;
+    imgWrap.style.transform=`translate(${cx}px,${cy}px)`;
+  });
+})();
+
+// ====== BGM + サウンドFX ======
+(function(){
+  const bgm=document.getElementById('bgm');
+  const btn=document.getElementById('bgm-btn');
+  let bgmOn=false;
+
+  // Web Audio API で軽量サウンド合成
+  let actx;
+  function getCtx(){
+    if(!actx) actx=new(window.AudioContext||window.webkitAudioContext)();
+    return actx;
+  }
+  function playTone(freq,dur,vol,type){
+    try{
+      const c=getCtx();
+      const o=c.createOscillator(),g=c.createGain();
+      o.connect(g); g.connect(c.destination);
+      o.type=type||'sine'; o.frequency.value=freq;
+      g.gain.setValueAtTime(vol||.12,c.currentTime);
+      g.gain.exponentialRampToValueAtTime(.001,c.currentTime+dur);
+      o.start(); o.stop(c.currentTime+dur);
+    }catch(e){}
+  }
+  const SFX={
+    pop:()=>playTone(700,.1,.13,'sine'),
+    click:()=>playTone(450,.07,.08,'triangle'),
+  };
+
+  // BGM ボタン
+  btn.addEventListener('click',()=>{
+    bgmOn=!bgmOn;
+    if(bgmOn){ bgm.play().catch(()=>{}); btn.classList.remove('muted'); btn.textContent='🎵'; }
+    else{ bgm.pause(); btn.classList.add('muted'); btn.textContent='🔇'; }
+    SFX.pop();
+  });
+
+  // ホバー音
+  document.querySelectorAll('.nav-links a,.btn,.sc,.arrow-btn').forEach(el=>{
+    el.addEventListener('mouseenter',()=>SFX.pop());
+  });
+  // クリック音（ナビゲーションリンク）
+  document.querySelectorAll('a[href^="#"]').forEach(el=>{
+    el.addEventListener('click',()=>SFX.click());
+  });
+})();
 
 // SLIDER ARROWS
 function slideLeft(id){ document.getElementById(id).scrollBy({left:-550,behavior:'smooth'}); }
