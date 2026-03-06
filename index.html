@@ -277,22 +277,6 @@ body{cursor:none}
 @keyframes trailFade{0%{opacity:.75;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-230%) scale(.1)}}
 .cur-burst{position:fixed;pointer-events:none;z-index:99997;font-size:1rem;transform:translate(-50%,-50%);transition:all .5s cubic-bezier(.2,.8,.2,1)}
 
-/* ====== BGM ボタン ====== */
-#bgm-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:500;width:3.4rem;height:3.4rem;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--purple));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 22px rgba(255,133,179,.45);transition:all .25s}
-#bgm-btn:hover{transform:scale(1.15);box-shadow:0 6px 32px rgba(255,133,179,.65)}
-#bgm-btn.muted{background:linear-gradient(135deg,#bbb,#999);box-shadow:none;opacity:.75}
-
-/* ====== X プロフィールカード ====== */
-.x-card{display:block;max-width:420px;margin:2.5rem auto 0;padding:1.8rem 2rem;border-radius:1.6rem;background:linear-gradient(140deg,#1a0f20,#2a1535);border:1.5px solid #4a2560;box-shadow:0 6px 28px rgba(88,0,160,.3);text-decoration:none;transition:transform .2s,box-shadow .2s}
-.x-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(88,0,160,.45)}
-.x-card-header{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
-.x-logo{font-size:1.8rem;font-weight:900;color:#fff;line-height:1}
-.x-card-name{display:flex;flex-direction:column;gap:.1rem}
-.x-dname{font-size:1.05rem;font-weight:800;color:#fff}
-.x-handle{font-size:.85rem;color:#aaa}
-.x-card-bio{font-size:.92rem;color:#ddd;line-height:1.6;margin-bottom:1.2rem}
-.x-card-btn{display:inline-block;padding:.5rem 1.4rem;border-radius:999px;background:linear-gradient(90deg,#ff85b3,#c97aff);color:#fff;font-size:.88rem;font-weight:800}
-@media(max-width:640px){#bgm-btn{bottom:1.2rem;right:1.2rem;width:3rem;height:3rem;font-size:1.1rem}}
 
 /* ====== おみくじ CARD SECTION ====== */
 #omikuji-section{background:linear-gradient(180deg,#f5f0ff 0%,#fef9f0 100%)}
@@ -332,7 +316,6 @@ body.dark .btn-o{background:#2a1f35!important}
 body.dark .hnav-item{filter:brightness(.85) saturate(1.2)}
 body.dark .hnav-item:nth-child(4){color:#fff}
 body.dark .cbox{background:rgba(42,31,53,.9)!important;border-color:rgba(201,122,255,.3)!important}
-body.dark .x-card{border-color:#6a35a0}
 body.dark .clip-nav{background:rgba(42,31,53,.9)!important}body.dark .chip{background:#2a1f35!important;border-color:#4a2560!important;color:var(--pink)!important}
 body.dark .omikuji-box{background:linear-gradient(160deg,#2a1f35,#1e1228,#251635)!important;border-color:#c8a000!important}
 body.dark .omikuji-msg-text{color:#d4b0ff!important}
@@ -379,12 +362,6 @@ body.dark .omikuji-sub{color:#9a70c0!important}
 <!-- カスタムカーソル -->
 <div id="cur">🐾</div>
 
-<!-- BGM -->
-<audio id="bgm" loop preload="none">
-  <!-- bgm.mp3 をこのフォルダに置いてください（dova-s.jp 等のフリー音源） -->
-  <source src="bgm.mp3" type="audio/mpeg">
-</audio>
-<button id="bgm-btn" class="muted" title="BGM ON/OFF">🎵</button>
 
 <canvas id="particles"></canvas>
 
@@ -756,45 +733,6 @@ body.dark .omikuji-sub{color:#9a70c0!important}
         <div class="sic">🍡</div><div class="sn">ましゅまろ</div><div class="sh">すきってゆえ！！！</div>
       </a>
     </div>
-    <!-- X タイムライン（ウィジェット優先・ブロック時フォールバック） -->
-    <div id="tw-widget-wrap" class="tw-wrap rv">
-      <a class="twitter-timeline"
-         data-theme="dark"
-         data-tweet-limit="5"
-         data-chrome="noheader nofooter noborders transparent"
-         data-lang="ja"
-         href="https://x.com/TAKENEKOchan">
-        Tweets by @TAKENEKOchan
-      </a>
-    </div>
-    <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="x-card rv" id="x-card-fallback" style="display:none">
-      <div class="x-card-header">
-        <span class="x-logo">𝕏</span>
-        <div class="x-card-name">
-          <span class="x-dname">たけねこ 🎋🐈</span>
-          <span class="x-handle">@TAKENEKOchan</span>
-        </div>
-      </div>
-      <p class="x-card-bio">ねこのVTuber🐾 サモナーズリフトの住人🗡️<br>イブリンOTP ／ #ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</p>
-      <div class="x-card-btn">最新ポストを見る →</div>
-    </a>
-    <script>
-    (function(){
-      var s=document.createElement('script');
-      s.src='https://platform.twitter.com/widgets.js';
-      s.charset='utf-8';
-      s.async=true;
-      document.head.appendChild(s);
-      setTimeout(function(){
-        var wrap=document.getElementById('tw-widget-wrap');
-        if(wrap&&!wrap.querySelector('iframe')){
-          wrap.style.display='none';
-          var fb=document.getElementById('x-card-fallback');
-          if(fb) fb.style.display='block';
-        }
-      },4500);
-    })();
-    </script>
   </div>
 </section>
 
@@ -1070,51 +1008,6 @@ window.addEventListener('scroll',()=>{
   });
 })();
 
-// ====== BGM + サウンドFX ======
-(function(){
-  const bgm=document.getElementById('bgm');
-  const btn=document.getElementById('bgm-btn');
-  let bgmOn=false;
-
-  // Web Audio API で軽量サウンド合成
-  let actx;
-  function getCtx(){
-    if(!actx) actx=new(window.AudioContext||window.webkitAudioContext)();
-    return actx;
-  }
-  function playTone(freq,dur,vol,type){
-    try{
-      const c=getCtx();
-      const o=c.createOscillator(),g=c.createGain();
-      o.connect(g); g.connect(c.destination);
-      o.type=type||'sine'; o.frequency.value=freq;
-      g.gain.setValueAtTime(vol||.12,c.currentTime);
-      g.gain.exponentialRampToValueAtTime(.001,c.currentTime+dur);
-      o.start(); o.stop(c.currentTime+dur);
-    }catch(e){}
-  }
-  const SFX={
-    pop:()=>playTone(700,.1,.13,'sine'),
-    click:()=>playTone(450,.07,.08,'triangle'),
-  };
-
-  // BGM ボタン
-  btn.addEventListener('click',()=>{
-    bgmOn=!bgmOn;
-    if(bgmOn){ bgm.play().catch(()=>{}); btn.classList.remove('muted'); btn.textContent='🎵'; }
-    else{ bgm.pause(); btn.classList.add('muted'); btn.textContent='🔇'; }
-    SFX.pop();
-  });
-
-  // ホバー音
-  document.querySelectorAll('.nav-links a,.btn,.sc,.arrow-btn').forEach(el=>{
-    el.addEventListener('mouseenter',()=>SFX.pop());
-  });
-  // クリック音（ナビゲーションリンク）
-  document.querySelectorAll('a[href^="#"]').forEach(el=>{
-    el.addEventListener('click',()=>SFX.click());
-  });
-})();
 
 
 // ====== おみくじ ======
