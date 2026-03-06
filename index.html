@@ -133,10 +133,10 @@ section{position:relative}
 .arrow-btn{width:3rem;height:3rem;border-radius:50%;border:2.5px solid var(--pink-lt);background:white;color:var(--pink);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-weight:900}
 .arrow-btn:hover{background:var(--pink);color:white;border-color:var(--pink);transform:scale(1.1)}
 
-.slider-wrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent)}
+.slider-wrap{position:relative;overflow:hidden;cursor:grab;-webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent)}
+.slider-wrap.is-dragging{cursor:grabbing}
 .slider{display:flex;overflow:visible;padding:.5rem 0 1.2rem}
 .slider-track{display:flex;gap:1rem;animation:marquee var(--dur,40s) linear infinite;will-change:transform}
-.slider-wrap:hover .slider-track,.slider-track.paused{animation-play-state:paused}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 .slide-item{flex-shrink:0;width:300px;border-radius:1.4rem;overflow:hidden;position:relative;cursor:pointer;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:transform .3s,box-shadow .3s}
@@ -1130,13 +1130,11 @@ window.addEventListener('scroll',()=>{
     const slider = document.getElementById(sliderId);
     if (!slider) return;
 
-    // 既存アイテムを .slider-track にまとめる
     const track = document.createElement('div');
     track.className = 'slider-track';
     const originals = Array.from(slider.children);
     originals.forEach(item => track.appendChild(item));
 
-    // 複製してシームレスループ
     originals.forEach(orig => {
       const clone = orig.cloneNode(true);
       clone.dataset.clone = '1';
@@ -1150,26 +1148,94 @@ window.addEventListener('scroll',()=>{
 
     slider.appendChild(track);
 
-    // 幅に応じてアニメーション速度を設定（描画後に計算）
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      const dur = (track.scrollWidth / 2) / pxPerSec;
-      track.style.setProperty('--dur', Math.max(dur, 15) + 's');
-    }));
+    let dur = 40;
+    const wrap = slider.closest('.slider-wrap');
 
-    // タッチで一時停止
-    let tTimer;
-    slider.closest('.slider-wrap').addEventListener('touchstart', () => {
-      track.classList.add('paused');
-      clearTimeout(tTimer);
-    }, { passive: true });
-    slider.closest('.slider-wrap').addEventListener('touchend', () => {
-      tTimer = setTimeout(() => track.classList.remove('paused'), 1000);
-    }, { passive: true });
+    // アニメーションを現在位置から再開
+    function startAnim(fromX) {
+      const half = track.scrollWidth / 2;
+      let x = fromX % half;
+      if (x > 0) x -= half;
+      if (x < -half) x += half;
+      const delay = -(Math.abs(x) / half) * dur;
+      track.style.transform = '';
+      track.style.animation = 'none';
+      void track.offsetWidth; // reflow
+      track.style.animation = `marquee ${dur}s linear infinite`;
+      track.style.animationDelay = `${delay}s`;
+      track.style.animationPlayState = isHovered ? 'paused' : 'running';
+    }
+
+    function getX() {
+      return new DOMMatrix(window.getComputedStyle(track).transform).m41;
+    }
+
+    // ホバー管理
+    let isHovered = false;
+    wrap.addEventListener('mouseenter', () => {
+      isHovered = true;
+      if (!isDragging) track.style.animationPlayState = 'paused';
+    });
+    wrap.addEventListener('mouseleave', () => {
+      isHovered = false;
+      if (!isDragging) track.style.animationPlayState = 'running';
+    });
+
+    // ドラッグ管理
+    let isDragging = false, startX = 0, startTX = 0, moved = false;
+
+    function onStart(clientX) {
+      isDragging = true;
+      moved = false;
+      startX = clientX;
+      startTX = getX();
+      track.style.animationPlayState = 'paused';
+      track.style.transform = `translateX(${startTX}px)`;
+      wrap.classList.add('is-dragging');
+    }
+
+    function onMove(clientX) {
+      if (!isDragging) return;
+      const delta = clientX - startX;
+      if (Math.abs(delta) > 4) moved = true;
+      const half = track.scrollWidth / 2;
+      let newX = (startTX + delta) % half;
+      if (newX > 0) newX -= half;
+      if (newX < -half) newX += half;
+      track.style.transform = `translateX(${newX}px)`;
+    }
+
+    function onEnd() {
+      if (!isDragging) return;
+      isDragging = false;
+      wrap.classList.remove('is-dragging');
+      startAnim(getX());
+    }
+
+    // ドラッグ後のクリック誤爆防止
+    wrap.addEventListener('click', e => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
+
+    // マウス
+    wrap.addEventListener('mousedown', e => { if (e.button === 0) { e.preventDefault(); onStart(e.clientX); } });
+    window.addEventListener('mousemove', e => onMove(e.clientX));
+    window.addEventListener('mouseup', () => onEnd());
+
+    // タッチ
+    wrap.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
+    wrap.addEventListener('touchmove', e => onMove(e.touches[0].clientX), { passive: true });
+    wrap.addEventListener('touchend', () => onEnd(), { passive: true });
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      dur = Math.max((track.scrollWidth / 2) / pxPerSec, 15);
+      startAnim(0);
+    }));
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    setupMarquee('photos-slider', 80);   // お写真：ゆっくり
-    setupMarquee('fanart-slider', 120);  // ファンアート：少し速め
+    setupMarquee('photos-slider', 80);
+    setupMarquee('fanart-slider', 120);
   });
 })();
 
