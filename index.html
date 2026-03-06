@@ -121,21 +121,19 @@ section{position:relative}
 .arrow-btn{width:3rem;height:3rem;border-radius:50%;border:2.5px solid var(--pink-lt);background:white;color:var(--pink);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-weight:900}
 .arrow-btn:hover{background:var(--pink);color:white;border-color:var(--pink);transform:scale(1.1)}
 
-.slider-wrap{position:relative}
-.slider{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.5rem .3rem 1.2rem;-ms-overflow-style:none;scrollbar-width:none}
-.slider::-webkit-scrollbar{display:none}
+.slider-wrap{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent)}
+.slider{display:flex;overflow:visible;padding:.5rem 0 1.2rem}
+.slider-track{display:flex;gap:1rem;animation:marquee var(--dur,40s) linear infinite;will-change:transform}
+.slider-wrap:hover .slider-track,.slider-track.paused{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.slide-item{flex-shrink:0;width:300px;border-radius:1.4rem;overflow:hidden;position:relative;cursor:pointer;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:all .3s;scroll-snap-align:start}
+.slide-item{flex-shrink:0;width:300px;border-radius:1.4rem;overflow:hidden;position:relative;cursor:pointer;border:3px solid white;box-shadow:0 4px 20px rgba(201,122,255,.15);transition:transform .3s,box-shadow .3s}
 .slide-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 40px rgba(201,122,255,.35)}
 .slide-item img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform .3s}
 .slide-item:hover img{transform:scale(1.04)}
 
 /* お写真は横長も考慮 */
 .photos-slider .slide-item img{aspect-ratio:unset;max-height:380px;object-fit:contain;background:#faf7ff}
-
-
-/* scroll hint fade edges */
-.slider-wrap::after{content:'';position:absolute;right:0;top:0;bottom:1.2rem;width:60px;background:linear-gradient(to left,rgba(248,240,255,.9),transparent);pointer-events:none;border-radius:0 1.2rem 1.2rem 0}
 
 /* SNS */
 #sns{background:linear-gradient(180deg,#fff5fb 0%,#f0fff9 100%)}
@@ -303,9 +301,7 @@ body.dark .arrow-btn{background:#2a1f35!important}
 body.dark .btn-o{background:#2a1f35!important}
 body.dark .cbox{background:rgba(42,31,53,.9)!important;border-color:rgba(201,122,255,.3)!important}
 body.dark .tw-wrap{border-color:#4a2560!important}
-body.dark .clip-nav{background:rgba(42,31,53,.9)!important}
-body.dark .slider-wrap::after{background:linear-gradient(to left,rgba(20,10,30,.9),transparent)!important}
-body.dark .chip{background:#2a1f35!important;border-color:#4a2560!important;color:var(--pink)!important}
+body.dark .clip-nav{background:rgba(42,31,53,.9)!important}body.dark .chip{background:#2a1f35!important;border-color:#4a2560!important;color:var(--pink)!important}
 body.dark .omikuji-box{background:linear-gradient(160deg,#2a1f35,#1e1228,#251635)!important;border-color:#c8a000!important}
 body.dark .omikuji-msg-text{color:#d4b0ff!important}
 body.dark .omikuji-sub{color:#9a70c0!important}
@@ -462,10 +458,6 @@ body.dark .omikuji-sub{color:#9a70c0!important}
           <h3>お写真</h3>
           <span class="gb-count">9枚</span>
         </div>
-        <div class="gb-arrows">
-          <button class="arrow-btn" onclick="slideLeft('photos-slider')">&#8249;</button>
-          <button class="arrow-btn" onclick="slideRight('photos-slider')">&#8250;</button>
-        </div>
       </div>
       <div class="slider-wrap">
         <div class="slider photos-slider" id="photos-slider">
@@ -516,10 +508,6 @@ body.dark .omikuji-sub{color:#9a70c0!important}
           <span style="font-size:1.6rem">🎨</span>
           <h3>ファンアート</h3>
           <span class="gb-count">40枚</span>
-        </div>
-        <div class="gb-arrows">
-          <button class="arrow-btn" onclick="slideLeft('fanart-slider')">&#8249;</button>
-          <button class="arrow-btn" onclick="slideRight('fanart-slider')">&#8250;</button>
         </div>
       </div>
       <div class="slider-wrap">
@@ -1128,63 +1116,52 @@ window.addEventListener('scroll',()=>{
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();});
 })();
 
-// SLIDER ARROWS
-function slideLeft(id){ document.getElementById(id).scrollBy({left:-550,behavior:'smooth'}); }
-function slideRight(id){ document.getElementById(id).scrollBy({left:550,behavior:'smooth'}); }
-
-// ====== GALLERY AUTO SCROLL ======
+// ====== GALLERY MARQUEE ======
 (function(){
-  function setupAutoScroll(sliderId, speed) {
+  function setupMarquee(sliderId, pxPerSec) {
     const slider = document.getElementById(sliderId);
     if (!slider) return;
 
-    // CSS scroll-behavior を切って RAF で直接制御
-    slider.style.scrollBehavior = 'auto';
-
-    // 全アイテムを複製してループ素材を追加
+    // 既存アイテムを .slider-track にまとめる
+    const track = document.createElement('div');
+    track.className = 'slider-track';
     const originals = Array.from(slider.children);
-    originals.forEach(item => {
-      const clone = item.cloneNode(true);
-      clone.dataset.clone = '1';
-      slider.appendChild(clone);
-    });
+    originals.forEach(item => track.appendChild(item));
 
-    // 複製アイテムのクリックで元のライトボックスを開く
-    slider.querySelectorAll('[data-clone="1"]').forEach(clone => {
+    // 複製してシームレスループ
+    originals.forEach(orig => {
+      const clone = orig.cloneNode(true);
+      clone.dataset.clone = '1';
       clone.addEventListener('click', () => {
         const src = clone.dataset.src;
         const idx = allItems.findIndex(it => it.dataset.src === src);
         if (idx >= 0) openLb(idx);
       });
+      track.appendChild(clone);
     });
 
-    let paused = false;
-    let lastTs = null;
+    slider.appendChild(track);
 
-    function tick(ts) {
-      if (!paused && lastTs !== null) {
-        slider.scrollLeft += speed * (ts - lastTs);
-        // 半分超えたら先頭へジャンプ（シームレスループ）
-        if (slider.scrollLeft >= slider.scrollWidth / 2) {
-          slider.scrollLeft -= slider.scrollWidth / 2;
-        }
-      }
-      lastTs = paused ? null : ts;
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    // 幅に応じてアニメーション速度を設定（描画後に計算）
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const dur = (track.scrollWidth / 2) / pxPerSec;
+      track.style.setProperty('--dur', Math.max(dur, 15) + 's');
+    }));
 
-    // ホバー・タッチで一時停止
-    slider.addEventListener('mouseenter', () => paused = true);
-    slider.addEventListener('mouseleave', () => { paused = false; });
+    // タッチで一時停止
     let tTimer;
-    slider.addEventListener('touchstart', () => { paused = true; clearTimeout(tTimer); }, { passive: true });
-    slider.addEventListener('touchend', () => { tTimer = setTimeout(() => paused = false, 1500); }, { passive: true });
+    slider.closest('.slider-wrap').addEventListener('touchstart', () => {
+      track.classList.add('paused');
+      clearTimeout(tTimer);
+    }, { passive: true });
+    slider.closest('.slider-wrap').addEventListener('touchend', () => {
+      tTimer = setTimeout(() => track.classList.remove('paused'), 1000);
+    }, { passive: true });
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    setupAutoScroll('photos-slider', 0.035); // お写真：ゆっくり
-    setupAutoScroll('fanart-slider', 0.055); // ファンアート：少し速め
+    setupMarquee('photos-slider', 80);   // お写真：ゆっくり
+    setupMarquee('fanart-slider', 120);  // ファンアート：少し速め
   });
 })();
 
