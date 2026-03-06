@@ -342,7 +342,7 @@ body.dark .omikuji-sub{color:#9a70c0!important}
 .omikuji-result-area.show{display:flex;animation:oReveal .5s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes oReveal{from{opacity:0;transform:scale(.6) rotate(-6deg)}to{opacity:1;transform:scale(1) rotate(0)}}
 .omikuji-rank-text{font-size:3rem;font-weight:900;letter-spacing:.1em;padding:.35rem 1.6rem;border-radius:1.2rem;display:inline-block}
-.omikuji-msg-text{font-size:1rem;font-weight:800;color:#4a2560;line-height:1.8;margin:.5rem 0 1rem;padding:0 .5rem}
+.omikuji-msg-text{font-size:1rem;font-weight:800;color:#4a2560;line-height:1.8;margin:.5rem 0 1rem;padding:0 .5rem;white-space:pre-line}
 .omikuji-again-btn{background:transparent;border:2.5px solid var(--pink);color:var(--pink);border-radius:999px;padding:.6rem 1.6rem;font-size:.95rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s}
 .omikuji-again-btn:hover{background:var(--pink);color:white;transform:scale(1.04)}
 .omikuji-sparks{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:2.4rem}
@@ -1024,40 +1024,40 @@ window.addEventListener('scroll',()=>{
   const sparksEl=modal.querySelector('.omikuji-sparks');
   const FORTUNES=[
     {rank:'大吉',style:'background:linear-gradient(135deg,#e8a000,#ffcc44);color:white;text-shadow:0 2px 8px rgba(0,0,0,.2)',msgs:[
-      '今日のLoLは無双確定！イブリンを止められる奴はいない🗡️✨ペンタキルいっとけ！',
-      '超絶運気MAX！配信の同接が過去最高になる予感🌟今すぐ配信スタートして！',
-      '全レーン制圧日和！タンク相手でも余裕で溶かせる🎋神引き大吉おめでとう！',
-      'この世の全てがたけねこを祝福してる日🐾今日すれ違う全員がかわいいって思ってるよ💖',
+      '今日のLoLは無双確定！\nイブリンを止められる奴はいない🗡️\nペンタキルいっとけ！',
+      '超絶運気MAX！\n配信の同接が過去最高になる予感🌟\n今すぐ配信スタートして！',
+      '全レーン制圧日和！\nタンク相手でも余裕で溶かせる🎋\n神引き大吉おめでとう！',
+      'この世の全てがたけねこを祝福してる日🐾\n今日すれ違う全員がかわいいって思ってるよ💖',
     ]},
     {rank:'中吉',style:'background:linear-gradient(135deg,#ff85b3,#ff9cc0);color:white',msgs:[
-      'まあまあ勝てる日！でもスモルダーだけは殴るな。スタックが怖い🐾',
-      '悪くない日！ランク戦2勝は固い。水分しっかり摂って配信がんばろ🐱',
-      '配信コメント多めかも！テンション上げていったら同接ぐんぐん伸びそう🌸',
-      'そこそこいい運気✨昼寝後の調子が特にいい日なので仮眠は必須😴',
+      'まあまあ勝てる日！\nでもスモルダーだけは殴るな。\nスタックが怖い🐾',
+      '悪くない日！\nランク戦2勝は固い。\n水分しっかり摂って配信がんばろ🐱',
+      '配信コメント多めかも！\nテンション上げていったら\n同接ぐんぐん伸びそう🌸',
+      'そこそこいい運気✨\n昼寝後の調子が特にいい日なので\n仮眠は必須😴',
     ]},
     {rank:'小吉',style:'background:linear-gradient(135deg,#5ee8c8,#00d4a8);color:#065f46',msgs:[
-      'ちょっとだけいい日☘️昼寝してから配信したらいい感じになる予感😴',
-      'まあまあかな。お酒1杯だけにしておくと運気がちょっと上がるらしい🍶',
-      '小さな幸運あり！フォロワーがじわじわ増えそうな気配👀コツコツ配信！',
-      '悪くはない。今日はタバコ1本だけにしたら小吉が中吉に昇格するかも🚬',
+      'ちょっとだけいい日☘️\n昼寝してから配信したら\nいい感じになる予感😴',
+      'まあまあかな。\nお酒1杯だけにしておくと\n運気がちょっと上がるらしい🍶',
+      '小さな幸運あり！\nフォロワーがじわじわ増えそうな気配👀\nコツコツ配信！',
+      '悪くはない。\n今日はタバコ1本だけにしたら\n小吉が中吉に昇格するかも🚬',
     ]},
     {rank:'末吉',style:'background:linear-gradient(135deg,#a0aec0,#718096);color:white',msgs:[
-      '今日はJGがガンクしてくれない予感…でもまあ死なければOK🐾自衛しよ',
-      'ぼちぼちの日。大きい期待は禁物。猫みたいに低く構えて生き延びよう🐱',
-      '末っ子の吉。凶じゃないから大丈夫！きっとなんとかなる……たぶん✨',
-      '期待値は低めで。でも昼寝で運気チャージすれば中吉くらいにはなれる😴💤',
+      '今日はJGがガンクしてくれない予感…\nでもまあ死なければOK🐾\n自衛しよ',
+      'ぼちぼちの日。\n大きい期待は禁物。\n猫みたいに低く構えて生き延びよう🐱',
+      '末っ子の吉。\n凶じゃないから大丈夫！\nきっとなんとかなる……たぶん✨',
+      '期待値は低めで。\nでも昼寝で運気チャージすれば\n中吉くらいにはなれる😴💤',
     ]},
     {rank:'凶',style:'background:linear-gradient(135deg,#f56565,#e53e3e);color:white',msgs:[
-      'スタックたまらない日。ヴェインに溶かされてキレる未来が見える💀',
-      '今日はレーン全負け予報。全部JGのせいにしていい日なので遠慮なくどうぞ🙏',
-      '運気ちょっとやばめ。ランク1敗したら即休憩。感情的になりやすいので要注意🔥',
-      '凶。でもお酒飲んで猫動画見てたら自然と回復するタイプの凶🍶',
+      'スタックたまらない日。\nヴェインに溶かされてキレる未来が見える💀',
+      '今日はレーン全負け予報。\n全部JGのせいにしていい日なので\n遠慮なくどうぞ🙏',
+      '運気ちょっとやばめ。\nランク1敗したら即休憩。\n感情的になりやすいので要注意🔥',
+      '凶。\nでもお酒飲んで猫動画見てたら\n自然と回復するタイプの凶🍶',
     ]},
     {rank:'大凶',style:'background:linear-gradient(135deg,#4a1942,#2d1230);color:#ff85b3;border:2px solid #ff85b3',msgs:[
-      '降参ボタンの夢を見た。今日はLoLを起動しないのが正解🍶お酒だけ飲もう',
-      '起きた瞬間から凶オーラ全開💀でも大凶でも生きていける。ねこは強い🐾',
-      '最大凶！今日はゲーム禁止令を自分に出して。画面の外で猫を撫でよう📵🐱',
-      '全てがうまくいかない日。でも大凶引いたってことは明日は絶対大吉くる理論✨',
+      '降参ボタンの夢を見た。\n今日はLoLを起動しないのが正解🍶\nお酒だけ飲もう',
+      '起きた瞬間から凶オーラ全開💀\nでも大凶でも生きていける。\nねこは強い🐾',
+      '最大凶！\n今日はゲーム禁止令を自分に出して。\n画面の外で猫を撫でよう📵🐱',
+      '全てがうまくいかない日。\nでも大凶引いたってことは\n明日は絶対大吉くる理論✨',
     ]},
   ];
   function openModal(){
