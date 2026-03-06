@@ -1023,12 +1023,42 @@ window.addEventListener('scroll',()=>{
   const againBtn=modal.querySelector('.omikuji-again-btn');
   const sparksEl=modal.querySelector('.omikuji-sparks');
   const FORTUNES=[
-    {rank:'大吉',style:'background:linear-gradient(135deg,#e8a000,#ffcc44);color:white;text-shadow:0 2px 8px rgba(0,0,0,.2)',msg:'今日のLoLは無双できる！イブリン最強！🗡️'},
-    {rank:'中吉',style:'background:linear-gradient(135deg,#ff85b3,#ff9cc0);color:white',msg:'まあまあ勝てる。でもスモルダーには注意🐾'},
-    {rank:'小吉',style:'background:linear-gradient(135deg,#5ee8c8,#00d4a8);color:#065f46',msg:'普通の日。昼寝してから配信しよう😴'},
-    {rank:'末吉',style:'background:linear-gradient(135deg,#a0aec0,#718096);color:white',msg:'今日はJGがガンクしてくれない予感…'},
-    {rank:'凶',style:'background:linear-gradient(135deg,#f56565,#e53e3e);color:white',msg:'スタックたまらない日。ヴェインに溶かされる💀'},
-    {rank:'大凶',style:'background:linear-gradient(135deg,#4a1942,#2d1230);color:#ff85b3;border:2px solid #ff85b3',msg:'降参ボタンの夢を見た。今日は酒だけ飲もう🍶'},
+    {rank:'大吉',style:'background:linear-gradient(135deg,#e8a000,#ffcc44);color:white;text-shadow:0 2px 8px rgba(0,0,0,.2)',msgs:[
+      '今日のLoLは無双確定！イブリン止められる奴いない🗡️✨ペンタキルいっとけ！',
+      '超絶運気MAX！配信の同接が過去最高になる予感🌟今すぐ配信スタートして！',
+      '全レーン制圧日和！タンク相手でも溶かせる気がする🎋神引き大吉おめでとう！',
+      'この世の全てがたけねこを祝福してる🐾今日会う全員があなたのことかわいいと思ってる💖',
+    ]},
+    {rank:'中吉',style:'background:linear-gradient(135deg,#ff85b3,#ff9cc0);color:white',msgs:[
+      'まあまあ勝てる日！でもスモルダーだけは殴るな。スタックが怖い🐾',
+      '悪くない日！ランク戦2勝は固い。水分しっかり摂って配信がんばろ🐱',
+      '配信コメント多めかも！テンション上げてったら同接ぐんぐん伸びそう🌸',
+      'そこそこいい運気✨昼寝したあとの調子が特に上がる日なので仮眠は必須😴',
+    ]},
+    {rank:'小吉',style:'background:linear-gradient(135deg,#5ee8c8,#00d4a8);color:#065f46',msgs:[
+      'ちょっとだけいい日☘️昼寝してから配信したらいい感じになる予感😴',
+      'まあまあかな。お酒1杯だけにしておくと運気がちょっと上がるらしい🍶',
+      '小さな幸運あり！フォロワーがじわじわ増えそうな気配👀コツコツ配信！',
+      '悪くはない。今日はタバコ1本だけにしたら吉が中吉に昇格するかも🚬',
+    ]},
+    {rank:'末吉',style:'background:linear-gradient(135deg,#a0aec0,#718096);color:white',msgs:[
+      '今日はJGがガンクしてくれない予感…でもまあ死なければOK🐾自衛しよ',
+      'ぼちぼちの日。大きい期待は禁物。猫みたいに低く構えて生き延びよう🐱',
+      '末っ子の吉。凶じゃないから大丈夫！きっとなんとかなる。多分。たぶん✨',
+      '期待値は低めで。でも昼寝で運気チャージすれば中吉くらいにはなれる😴💤',
+    ]},
+    {rank:'凶',style:'background:linear-gradient(135deg,#f56565,#e53e3e);color:white',msgs:[
+      'スタックたまらない日。ヴェインに溶かされてキレる未来が見える💀',
+      '今日はレーン全負け予報。でもJGのせいにしていい特別な日だから許して🙏',
+      '運気ちょっとやばめ。ランク1敗したら即休憩。感情的になりやすいので要注意🔥',
+      '凶。でも酒飲んで猫動画見てたら気づいたら回復してるタイプの凶🍶',
+    ]},
+    {rank:'大凶',style:'background:linear-gradient(135deg,#4a1942,#2d1230);color:#ff85b3;border:2px solid #ff85b3',msgs:[
+      '降参ボタンの夢を見た。今日はLoLを起動しないのが正解🍶お酒だけ飲もう',
+      '起きた瞬間から凶オーラ全開💀でも大凶でも生きていける。ねこは強い🐾',
+      '最大凶！今日はゲーム禁止令を自分に出して。画面の外で猫を撫でよう📵🐱',
+      '全てがうまくいかない日。でも大凶引いたってことは明日は絶対大吉くる理論✨',
+    ]},
   ];
   function openModal(){
     modal.classList.add('open');
@@ -1069,7 +1099,7 @@ window.addEventListener('scroll',()=>{
       const f=FORTUNES[Math.floor(Math.random()*FORTUNES.length)];
       rankEl.setAttribute('style',f.style);
       rankEl.textContent=f.rank;
-      msgEl.textContent=f.msg;
+      msgEl.textContent=f.msgs[Math.floor(Math.random()*f.msgs.length)];
       resultArea.classList.add('show');
       spawnSparks();
     },500);
