@@ -282,8 +282,16 @@ body{cursor:none}
 #bgm-btn:hover{transform:scale(1.15);box-shadow:0 6px 32px rgba(255,133,179,.65)}
 #bgm-btn.muted{background:linear-gradient(135deg,#bbb,#999);box-shadow:none;opacity:.75}
 
-/* ====== Twitter タイムライン ====== */
-.tw-wrap{max-width:440px;margin:2.5rem auto 0;border-radius:1.6rem;overflow:hidden;border:2px solid var(--pink-lt);box-shadow:0 4px 20px rgba(255,133,179,.1)}
+/* ====== X プロフィールカード ====== */
+.x-card{display:block;max-width:420px;margin:2.5rem auto 0;padding:1.8rem 2rem;border-radius:1.6rem;background:linear-gradient(140deg,#1a0f20,#2a1535);border:1.5px solid #4a2560;box-shadow:0 6px 28px rgba(88,0,160,.3);text-decoration:none;transition:transform .2s,box-shadow .2s}
+.x-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(88,0,160,.45)}
+.x-card-header{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.x-logo{font-size:1.8rem;font-weight:900;color:#fff;line-height:1}
+.x-card-name{display:flex;flex-direction:column;gap:.1rem}
+.x-dname{font-size:1.05rem;font-weight:800;color:#fff}
+.x-handle{font-size:.85rem;color:#aaa}
+.x-card-bio{font-size:.92rem;color:#ddd;line-height:1.6;margin-bottom:1.2rem}
+.x-card-btn{display:inline-block;padding:.5rem 1.4rem;border-radius:999px;background:linear-gradient(90deg,#ff85b3,#c97aff);color:#fff;font-size:.88rem;font-weight:800}
 @media(max-width:640px){#bgm-btn{bottom:1.2rem;right:1.2rem;width:3rem;height:3rem;font-size:1.1rem}}
 
 /* ====== おみくじ CARD SECTION ====== */
@@ -324,7 +332,7 @@ body.dark .btn-o{background:#2a1f35!important}
 body.dark .hnav-item{filter:brightness(.85) saturate(1.2)}
 body.dark .hnav-item:nth-child(4){color:#fff}
 body.dark .cbox{background:rgba(42,31,53,.9)!important;border-color:rgba(201,122,255,.3)!important}
-body.dark .tw-wrap{border-color:#4a2560!important}
+body.dark .x-card{border-color:#6a35a0}
 body.dark .clip-nav{background:rgba(42,31,53,.9)!important}body.dark .chip{background:#2a1f35!important;border-color:#4a2560!important;color:var(--pink)!important}
 body.dark .omikuji-box{background:linear-gradient(160deg,#2a1f35,#1e1228,#251635)!important;border-color:#c8a000!important}
 body.dark .omikuji-msg-text{color:#d4b0ff!important}
@@ -748,28 +756,18 @@ body.dark .omikuji-sub{color:#9a70c0!important}
         <div class="sic">🍡</div><div class="sn">ましゅまろ</div><div class="sh">すきってゆえ！！！</div>
       </a>
     </div>
-    <!-- Twitter タイムライン -->
-    <div class="tw-wrap rv" id="tw-wrap">
-      <a class="twitter-timeline"
-         data-theme="dark"
-         data-tweet-limit="5"
-         data-chrome="noheader nofooter noborders transparent"
-         data-lang="ja"
-         href="https://x.com/TAKENEKOchan">
-        Tweets by @TAKENEKOchan
-      </a>
-    </div>
-    <script>
-    (function(){
-      var s=document.createElement('script');
-      s.src='https://platform.twitter.com/widgets.js';
-      s.charset='utf-8';
-      s.onload=function(){
-        if(window.twttr&&twttr.widgets) twttr.widgets.load(document.getElementById('tw-wrap'));
-      };
-      document.head.appendChild(s);
-    })();
-    </script>
+    <!-- X プロフィールカード -->
+    <a href="https://x.com/TAKENEKOchan" target="_blank" rel="noopener" class="x-card rv">
+      <div class="x-card-header">
+        <span class="x-logo">𝕏</span>
+        <div class="x-card-name">
+          <span class="x-dname">たけねこ 🎋🐈</span>
+          <span class="x-handle">@TAKENEKOchan</span>
+        </div>
+      </div>
+      <p class="x-card-bio">ねこのVTuber🐾 サモナーズリフトの住人🗡️<br>イブリンOTP ／ #ﾀｹﾈｺｶﾜｲｲﾔｯﾀｰ</p>
+      <div class="x-card-btn">最新ポストを見る →</div>
+    </a>
   </div>
 </section>
 
